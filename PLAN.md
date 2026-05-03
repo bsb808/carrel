@@ -32,7 +32,7 @@ Explicitly *not* required:
 
 - Peer review.
 - Subscriber/newsletter mechanics (LinkedIn covers distribution).
-- Algorithmic discovery (the audience is colleagues, not strangers).  % CLAUDE: What would we need to tweak to make this discoverable?
+- Algorithmic discovery (the audience is colleagues, not strangers).
 
 ## Venues considered and rejected
 
@@ -280,7 +280,12 @@ Worth naming a thread the first time you suspect there might be a second post.
 - Posts are 800–2500 words typically. Short essays, not papers.
 - Plain prose, minimal jargon, no academic throat-clearing.
 
-## Personalization checklist (before first deploy). % CLAUDE: Let's work through these action items.
+## Personalization checklist (before first deploy)
+
+Tracked alongside `TODO.md`. Per TODO.md, the sweep is deferred until
+after the first article is drafted, so site title and tagline can be
+anchored against real content. Work through these in chat after the
+article ships.
 
 - [x] Choose final repo name — `carrel`
 - [x] Choose custom domain — `carrel.bbingham.dev` (subdomain of
@@ -299,17 +304,32 @@ Worth naming a thread the first time you suspect there might be a second post.
 
 ## Open questions to revisit
 
-- **Per-article DOI vs per-release DOI?** Current plan: per-article via
-  manual PDF upload to Zenodo for substantive pieces. The
-  Zenodo–GitHub release integration is an alternative if manual uploads
-  become friction. % CLAUDE: Would it be possible to get a per-article DOI, but have that point to the lastest release?
-- **Comments?** Quarto supports Hypothesis, Giscus, Utterances. Defer
-  unless there's demand. % CLAUDE: Yes, I'd like to be able to collect comments and use that feedback.  
+- **Per-article DOIs — manual or automated?** Zenodo mints both a
+  *version DOI* (fixed to a snapshot) and a *concept DOI* (always
+  resolves to the latest version of that record). Plan: cite the
+  version DOI in the archived snapshot; advertise the concept DOI for
+  the live reference. Open: whether to use manual PDF uploads (more
+  control over what gets archived) or the Zenodo–GitHub release
+  integration (automatic, but archives the whole repo at each tag). % CLAUDE: use the latter.
+- **Comments — which engine?** Wanted. Quarto supports three: % CLAUDE: Can we try each and decide?
+  **Giscus** (GitHub Discussions backend, modern UI, GitHub login —
+  recommended default), **Utterances** (older, uses GitHub Issues, not
+  appropriate since Issues are for bug tracking), and **Hypothesis**
+  (web annotation overlay for sentence-level academic margin
+  commentary — worth adding alongside Giscus). Plan: Giscus on every
+  post; revisit Hypothesis once the first few pieces are out.
 - **Newsletter?** A simple "subscribe via RSS" mention may suffice. If
   email becomes important later, Buttondown or similar can be bolted on
-  without changing the underlying architecture.  % CLAUDE: Good
+  without changing the underlying architecture.
 - **Carousel automation?** Worth scripting only if Instagram cross-posting
   becomes a regular habit.
+- **Algorithmic discovery later?** The architecture deliberately
+  bypasses recommendation engines. To buy broader reach later, the
+  levers are: cross-posting to a platform with built-in discovery
+  (Substack, Medium) — at the cost of the no-platform-lock-in
+  property — or layering manual social distribution (Hacker News, X,
+  Bluesky, relevant subreddits) on top. The stack itself has no
+  internal knob.
 
 ## Test cases this design should handle well
 
