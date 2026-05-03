@@ -304,20 +304,25 @@ article ships.
 
 ## Open questions to revisit
 
-- **Per-article DOIs — manual or automated?** Zenodo mints both a
-  *version DOI* (fixed to a snapshot) and a *concept DOI* (always
-  resolves to the latest version of that record). Plan: cite the
-  version DOI in the archived snapshot; advertise the concept DOI for
-  the live reference. Open: whether to use manual PDF uploads (more
-  control over what gets archived) or the Zenodo–GitHub release
-  integration (automatic, but archives the whole repo at each tag). % CLAUDE: use the latter.
-- **Comments — which engine?** Wanted. Quarto supports three: % CLAUDE: Can we try each and decide?
-  **Giscus** (GitHub Discussions backend, modern UI, GitHub login —
-  recommended default), **Utterances** (older, uses GitHub Issues, not
-  appropriate since Issues are for bug tracking), and **Hypothesis**
-  (web annotation overlay for sentence-level academic margin
-  commentary — worth adding alongside Giscus). Plan: Giscus on every
-  post; revisit Hypothesis once the first few pieces are out.
+- **Per-article DOIs — Zenodo–GitHub release integration.** Decided:
+  use the integration. Each Git tag fires a Zenodo deposit with a
+  *version DOI* (fixed to that snapshot) and a *concept DOI* (always
+  resolves to the latest version of the same record). To verify
+  before the first tagged release: the integration creates one Zenodo
+  *record* per GitHub repo, with each tag as a version under it — so
+  the repo gets one concept DOI, not one per article. If per-article
+  concept DOIs are wanted (one always-points-to-latest identifier per
+  article), the integration alone won't deliver them; options are
+  manual deposits per article, or scripted use of the Zenodo API.
+  Confirm what's wanted before the first tagged release.
+- **Comments — pilot all three.** Wanted. Plan: enable all three on
+  early posts and compare. **Giscus** (GitHub Discussions backend,
+  modern UI, GitHub login). **Utterances** (older, uses GitHub Issues
+  — likely uncomfortable since Issues are for bug tracking, but
+  worth a side-by-side). **Hypothesis** (web annotation overlay for
+  sentence-level academic margin commentary — different shape from
+  the other two; can run alongside). Pick after a few articles based
+  on which actually receives engagement and feels right to moderate.
 - **Newsletter?** A simple "subscribe via RSS" mention may suffice. If
   email becomes important later, Buttondown or similar can be bolted on
   without changing the underlying architecture.
