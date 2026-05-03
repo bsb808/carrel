@@ -166,14 +166,14 @@ categories: [computing-history]
 image: <hero-image.png>
 ```
 
-## Open questions
+## Policies
 
-- **One tag or several at the project/thread layer?** Can an article be
-  in two threads? (Probably yes, but only when the overlap is genuine —
-  not as a SEO-style tagging habit.). % CLAUDE: Yes
-- **Backfill policy for emerging themes.** Recommend: when a theme is
-  recognized, do one batch backfill across older articles, then tag
-  forward as you write. Don't keep re-scanning the archive. % CLAUDE: Yes
-- **Project + thread on the same article?** Plausible: a `usv-control`
-  project article that also belongs to an `engineering-pedagogy` thread.
-  Allow it; flag as unusual when it happens. % CLAUDE: Yes.
+- **Multi-thread tagging.** An article can carry tags for two threads
+  when the overlap is genuine — not as an SEO-style tagging habit.
+- **Backfill policy for emerging themes.** When a theme is recognized,
+  do one batch backfill across older articles, then tag forward as you
+  write. Don't keep re-scanning the archive.
+- **Project + thread on the same article.** Allowed when the article
+  genuinely belongs to both — e.g. a `usv-control` project article
+  that also fits an `engineering-pedagogy` thread. Flag as unusual
+  when it happens.
