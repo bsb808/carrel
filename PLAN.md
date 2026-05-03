@@ -282,21 +282,23 @@ Worth naming a thread the first time you suspect there might be a second post.
 
 ## Personalization checklist (before first deploy)
 
-- [ ] Choose final repo name (current: placeholder)
-- [ ] `_quarto.yml`: site title, description, `site-url`, author block,
-      ORCID
+- [x] Choose final repo name — `carrel`
+- [x] Choose custom domain — `carrel.bbingham.dev` (subdomain of
+      `bbingham.dev`)
+- [ ] `_quarto.yml`: site title, description, `site-url`
+      (`https://carrel.bbingham.dev`), author block, ORCID
 - [ ] `CITATION.cff`: name, ORCID, repo URL
 - [ ] `about.qmd`: bio, GitHub/LinkedIn links
 - [ ] `index.qmd`: tagline, intro paragraph
 - [ ] `README.md`: replace `yourname` placeholders
-- [ ] Connect repo to GitHub Pages (Settings → Pages → `gh-pages` branch)
+- [ ] Configure DNS: CNAME `carrel.bbingham.dev` → `<github-username>.github.io`
+- [ ] Connect repo to GitHub Pages (Settings → Pages → `gh-pages` branch;
+      add custom domain `carrel.bbingham.dev`)
 - [ ] Connect repo to Zenodo (zenodo.org → GitHub → toggle the repo on)
 - [ ] Verify a test deploy succeeds before writing the first real post
 
 ## Open questions to revisit
 
-- **Custom domain?** A `yourname.dev` or similar would future-proof the URL
-  beyond `*.github.io`. Easy to add later via GitHub Pages settings + DNS.
 - **Per-article DOI vs per-release DOI?** Current plan: per-article via
   manual PDF upload to Zenodo for substantive pieces. The
   Zenodo–GitHub release integration is an alternative if manual uploads
