@@ -32,7 +32,7 @@ Explicitly *not* required:
 
 - Peer review.
 - Subscriber/newsletter mechanics (LinkedIn covers distribution).
-- Algorithmic discovery (the audience is colleagues, not strangers).
+- Algorithmic discovery (the audience is colleagues, not strangers).  % CLAUDE: What would we need to tweak to make this discoverable?
 
 ## Venues considered and rejected
 
@@ -280,7 +280,7 @@ Worth naming a thread the first time you suspect there might be a second post.
 - Posts are 800–2500 words typically. Short essays, not papers.
 - Plain prose, minimal jargon, no academic throat-clearing.
 
-## Personalization checklist (before first deploy)
+## Personalization checklist (before first deploy). % CLAUDE: Let's work through these action items.
 
 - [x] Choose final repo name — `carrel`
 - [x] Choose custom domain — `carrel.bbingham.dev` (subdomain of
@@ -291,7 +291,7 @@ Worth naming a thread the first time you suspect there might be a second post.
 - [ ] `about.qmd`: bio, GitHub/LinkedIn links
 - [ ] `index.qmd`: tagline, intro paragraph
 - [ ] `README.md`: replace `yourname` placeholders
-- [ ] Configure DNS: CNAME `carrel.bbingham.dev` → `<github-username>.github.io`
+- [ ] Configure DNS: CNAME `carrel.bbingham.dev` → `bsb808.github.io`
 - [ ] Connect repo to GitHub Pages (Settings → Pages → `gh-pages` branch;
       add custom domain `carrel.bbingham.dev`)
 - [ ] Connect repo to Zenodo (zenodo.org → GitHub → toggle the repo on)
@@ -302,12 +302,12 @@ Worth naming a thread the first time you suspect there might be a second post.
 - **Per-article DOI vs per-release DOI?** Current plan: per-article via
   manual PDF upload to Zenodo for substantive pieces. The
   Zenodo–GitHub release integration is an alternative if manual uploads
-  become friction.
+  become friction. % CLAUDE: Would it be possible to get a per-article DOI, but have that point to the lastest release?
 - **Comments?** Quarto supports Hypothesis, Giscus, Utterances. Defer
-  unless there's demand.
+  unless there's demand. % CLAUDE: Yes, I'd like to be able to collect comments and use that feedback.  
 - **Newsletter?** A simple "subscribe via RSS" mention may suffice. If
   email becomes important later, Buttondown or similar can be bolted on
-  without changing the underlying architecture.
+  without changing the underlying architecture.  % CLAUDE: Good
 - **Carousel automation?** Worth scripting only if Instagram cross-posting
   becomes a regular habit.
 

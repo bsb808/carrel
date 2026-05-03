@@ -17,8 +17,8 @@ Running list of deferred work. Strike items as they're completed.
       - `README.md` — replace `yourname` placeholders
 
 - [ ] **Configure DNS for `carrel.bbingham.dev`.** Add CNAME record at
-      registrar pointing to `<github-username>.github.io`. Add custom
-      domain in repo Settings → Pages. GitHub auto-provisions Let's Encrypt.
+      registrar pointing to `bsb808.github.io`. Add custom domain in repo
+      Settings → Pages. GitHub auto-provisions Let's Encrypt.
 
 - [ ] **Connect repo to GitHub Pages** (Settings → Pages → `gh-pages` branch).
 
