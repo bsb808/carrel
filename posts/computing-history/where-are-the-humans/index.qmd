@@ -7,75 +7,195 @@ categories: [computing-history]
 draft: true
 ---
 
-<!-- Stage 1 outline. AI disclosure callout, full prose, hero image,
-     and any references are added in later stages per AUTHOR_WORKFLOW.md.
-     Target final length: ~600 words (2–3 min read, LinkedIn-clickable). -->
+<!-- Stage 2 annotated outline. Per-section notes, candidate quotes,
+     candidate images, and open questions. AI disclosure callout, full
+     prose, and final image selection are added in stage 3 per
+     AUTHOR_WORKFLOW.md.
+
+     Target final length: ~600 words (2-3 min read, LinkedIn-clickable).
+
+     Structural change from stage 1: §4 cut per PMR feedback; closing
+     diagnostic question folded into a short coda after §3. -->
 
 ## 1. Hook — the recurring claim, the better question
 
-The "this time the machine does it without us" % CLAUDE: Le'ts brainstorm a better quote
- claim recurs at every
-computing transition. Open by reframing it as David Mindell's
-argument in *Our Robots, Ourselves: Robotics and the Myths of
-Autonomy* (Viking, 2015): the question is never *whether* humans are
-involved, but *where in the system they sit*. Brief parenthetical
-disclosure that Mindell was one of my PhD advisors. Amazon link to
-the book. Set up the article's promise — a five-role grammar that
-lets you locate the humans in any era, including this one.
+**Argument.** Open with a recognizable autonomy claim from the
+current moment, then reframe it as Mindell's situated-autonomy
+argument: the question is never *whether* humans are involved, but
+*where in the system they sit*. The five-role grammar that follows
+is what lets you locate them.
+
+**Mindell attribution.** Cite *Our Robots, Ourselves: Robotics and
+the Myths of Autonomy* (Viking, 2015). Brief parenthetical that
+Mindell was one of my PhD advisors. Amazon link to the book.
+
+**Candidate opening quotes — pick one.**
+
+1. *"AI agents will do the work."* — generic but instantly
+   recognizable. Pin to a specific 2025/2026 executive (Altman, Amodei,
+   Nadella, etc.) for a real attribution; otherwise leave generic.
+2. The von Neumann line, contextualized: *"Why would you want more
+   than machine language?"* (1954, on first hearing of FORTRAN).
+   Pair with a contemporary echo to show the pattern recurring.
+3. A pointed Lovelace pairing: *"The Analytical Engine has no power
+   of originating anything"* (1843), then a 2026 voice claiming
+   exactly that.
+4. A "this time it's different" line from a recent piece naming the
+   autonomy claim explicitly.
+
+**Open questions.**
+
+- Which candidate lands best for the LinkedIn-clickable audience —
+  recognizability vs attribution friction; one quote or a paired
+  historical/current contrast?
+- Footnote vs parenthetical for the PhD-advisor disclosure?
+
+**Candidate images.** Likely no image for §1; let the title and pull
+quote carry the opening. Hero image (whole article) handled at §3.
 
 ## 2. Three sentences of history
 
-Compress 300 years into one paragraph. Newton's calculus → human
-computers at Penn → ENIAC → FORTRAN → MATLAB → CUDA → ML. The
-substrate keeps changing; the structure of the work doesn't. Set up
-§3: the same five roles run through every one of these eras and are
-easy to recognize using familiar pre-AI labels.
+**Argument.** Compress 300 years to three sentences. The point is
+not to teach the history — it is to establish that the *structure
+of the work* (problem → translate → execute → validate) has not
+changed since calculus, while the substrate keeps moving under it.
+
+**Compression sequence.** Newton's calculus → human computers at
+Penn → ENIAC (1945) → FORTRAN (1957) → MATLAB (1984) → CUDA (2007)
+→ ML (2020s).
+
+**Closing setup sentence.** "The same five roles run through every
+one of these eras, and once you have names for them, they are easy
+to recognize."
+
+**Candidate quotes (optional).**
+
+- Backus on the FORTRAN reception: assembly programmers were a
+  *"priesthood"* who met the project with *"considerable hostility
+  and derision."* Useful if §2 wants a real voice underneath the
+  compression. Source: research-file "previous-transition quotes".
+
+**Open question.** One sentence per era, or three sentences for the
+whole arc? At ~600 words total, a single tight paragraph reads more
+honestly than a beat-by-beat march.
+
+**Candidate images.** Optional small inline image: a representative
+artifact like an ENIAC patch panel close-up.
+[Wikimedia: ENIAC](https://commons.wikimedia.org/wiki/Category:ENIAC).
+Skip if the §3 hero already carries the visual load.
 
 ## 3. The five roles — old labels, recognizable across every era
 
-For each role: a one-sentence definition, a concrete pre-AI example
-where the role was easy to identify, and where it lives in a
-current-day agentic-AI workflow. % CLAUDE: Leave the mapping to current workflows as an option question.   The subtle point is that we don't know what the next workflows will be, but this grammar gives hits.
+**Argument.** The grammar. For each role, the definition is anchored
+in the pre-AI world, where the role was easy to name and easy to
+see. The mapping to current agentic-AI workflows is offered as a
+hint, not a definitive correspondence — the field is in motion, and
+the honest claim is that this grammar tells us *where to look* for
+the humans, not that we already know exactly where they have landed.
 
- The historical anchor is the
-load-bearing move — it lets the reader carry pre-AI intuition for
-each role straight into the new context.
+**Section-level open question.** How tentative should the "Today:"
+clauses sound — confident ("the human at the prompt"), hedged
+("probably the human at the prompt"), or framed as hypotheses ("if
+the pattern holds, the human at the prompt")? Historical anchors
+are load-bearing either way.
 
-- **Problem definer** — the principal investigator, the innovator,
-  the one who names what is to be modelled. This has always been the
-  key role; tools come and go, the PI's framing is what makes the
-  work matter. *Then:* Newton asking why planets move in ellipses;
-  von Neumann framing the H-bomb hydrodynamics problem at Los Alamos.
-  *Today:* the human at the prompt, specifying inputs, outputs, and
-  what counts as a correct answer.
-- **Compiler** (in the broad sense) — translates a problem stated in
-  domain language into operations the substrate can actually run.
-  *Then:* Gertrude Blanch as technical director of the WPA
-  Mathematical Tables Project, decomposing calculus into worksheets
-  that ~450 unemployed clerks could execute with arithmetic alone;
-  later, the ENIAC programmer turning math into a wiring diagram.
-  *Today:* the model's plan-and-decompose step.
-- **Manager** — organizes the work, paces it, handles handoffs.
-  *Then:* Williamina Fleming managing "Pickering's computers" at
-  Harvard Observatory; Dana Mitchell organizing human-computer teams
-  at Los Alamos. *Today:* the orchestration / tool-use loop, with a
-  human supervisor for production systems.
-- **Debugger** — catches errors without trusting any individual step.
-  *Then:* L. J. Comrie's differencing method at the British Nautical
-  Almanac Office; duplicate computation by independent clerks with a
-  third resolving disagreements (the same idea as triple modular
-  redundancy). *Today:* trace inspection, reruns, and structural
-  checks against a reference implementation.
-- **Validator** — confirms the answer matches reality. *Then:* the
-  senior scientist spot-checking against physical intuition or
-  limiting cases where the answer is known by other means. *Today:*
-  still the human — and increasingly load-bearing because the
-  intermediary in the middle is no longer inspectable.
+**Candidate hero image for the article.** The Moore School
+differential-analyser photo of Kay McNulty, Alyse Snyder, and Sis
+Stump (c. 1942–45). On-message: "where are the humans?" — they are
+in the photo, in plain view.
+[Wikimedia: Kathleen Antonelli](https://commons.wikimedia.org/wiki/Category:Kathleen_Antonelli).
+License: pre-1989 US Army publication, public domain.
 
-## 4. The Mindell payoff — placement, not presence % CLAUDE: Cut for brevity.  The mindell attribution at the top is sufficient.
+### Problem definer
 
-Build on the situated-autonomy frame introduced in §1. Each "this
+- Always the key role; tools come and go, the PI's framing is what
+  makes the work matter. The bullet should lead with this.
+- *Then.* Newton: why do planets move in ellipses? Von Neumann at
+  Los Alamos: framing the H-bomb hydrodynamics problem so it could
+  be computed at all.
+- *Today (tentative).* The human at the prompt who specifies inputs,
+  outputs, and what counts as a correct answer. With ML the
+  problem-definition step expands — there is no compact equation to
+  inspect, so specifying training data and validation criteria
+  becomes part of the definition.
+- Sources: research-file §11 ("ML era reframed"); "human-computer
+  era in detail" for von Neumann.
+
+### Compiler (in the broad sense)
+
+- Translates a problem stated in domain language into operations the
+  substrate can run. The role has existed continuously since the
+  mid-19th century — only its embodiment migrates (person → patch
+  panel → software → trained model).
+- *Then.* Gertrude Blanch as technical director of the WPA
+  Mathematical Tables Project (1938–48), decomposing calculus into
+  worksheets ~450 unemployed clerks could execute with arithmetic
+  alone. Strong claim to "most important compiler of the
+  pre-electronic era." Also: the ENIAC programmer turning math into
+  a wiring diagram.
+- *Today (tentative).* The model's plan-and-decompose step in
+  agentic workflows; or the trained model itself in the ML era,
+  where the compiler "collapses into the weights."
+- Candidate inline quote: Lovelace, *"The Analytical Engine has no
+  power of originating anything. It can only do what we know how to
+  order it to perform."* — useful here if §1 didn't already use it.
+- Sources: research-file "What is a compiler in the general sense?",
+  "human-computer era in detail."
+
+### Manager
+
+- Organizes the work, paces it, handles handoffs.
+- *Then.* Williamina Fleming managing "Pickering's computers" at
+  Harvard Observatory; Dana Mitchell organizing human-computer
+  teams at Los Alamos.
+- *Today (tentative).* The orchestration / tool-use loop. In
+  production: a human supervisor managing GPU clusters,
+  schedulers, and memory budgets.
+- Sources: research-file "human-computer era in detail"; "mapping
+  the same roles."
+
+### Debugger
+
+- Catches errors *without trusting any individual step.* Errors are
+  caught by the structure of the work, not by individual insight —
+  the same logic as modern type checking and unit tests.
+- *Then.* L. J. Comrie's differencing method at the British
+  Nautical Almanac Office; duplicate computation by independent
+  clerks, with a third resolving disagreements (the ancestor of
+  triple modular redundancy).
+- *Today (tentative).* Trace inspection, reruns, structural checks
+  against a reference implementation. With ML, debugging becomes
+  purely empirical because there is no algorithm to inspect.
+- Sources: research-file "human-computer era in detail"; "ML era
+  reframed."
+
+### Validator
+
+- Confirms the answer matches reality. The role that has *never*
+  moved off the human side, in any era. The piece's strongest claim.
+- *Then.* The senior scientist spot-checking against physical
+  intuition or limiting cases where the answer is known by other
+  means.
+- *Today (tentative).* Still the human — and increasingly
+  load-bearing because the intermediary in the middle is no longer
+  inspectable. The "validation gap" is the article's quietly most
+  important point: as intermediaries have become more opaque,
+  validation has had to shift from internal inspection to external
+  testing against ground truth.
+- Sources: research-file "validation gap widens with each
+  abstraction"; "ML era reframed."
+
+## Closing coda (replaces deleted §4)
+
+**Argument.** One short paragraph. Land the title without
+re-attributing Mindell (already done in §1). The move: every "this
 time the machine does it without us" claim turns out to mean "the
 humans are doing different work, earlier or later in the pipeline."
-The diagnostic question for any new system is "where are the humans
-now?", not "are they still needed?".
+The diagnostic question for any new system is *where are the humans
+now?*, not *are they still needed?*.
+
+**Length target.** Two to three sentences max.
+
+**Open question.** Does the closing land cleanly without §4's full
+treatment, or does the article need a short fourth section after
+all?
