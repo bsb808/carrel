@@ -170,10 +170,10 @@ image: <hero-image.png>
 
 - **One tag or several at the project/thread layer?** Can an article be
   in two threads? (Probably yes, but only when the overlap is genuine —
-  not as a SEO-style tagging habit.)
+  not as a SEO-style tagging habit.). % CLAUDE: Yes
 - **Backfill policy for emerging themes.** Recommend: when a theme is
   recognized, do one batch backfill across older articles, then tag
-  forward as you write. Don't keep re-scanning the archive.
+  forward as you write. Don't keep re-scanning the archive. % CLAUDE: Yes
 - **Project + thread on the same article?** Plausible: a `usv-control`
   project article that also belongs to an `engineering-pedagogy` thread.
-  Allow it; flag as unusual when it happens.
+  Allow it; flag as unusual when it happens. % CLAUDE: Yes.
