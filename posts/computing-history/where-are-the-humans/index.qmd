@@ -1,0 +1,60 @@
+---
+title: "Where Are the Humans?"
+description: "Five immutable roles from the history of computing, and where each lives in agentic AI."
+author: "Brian Bingham"
+date: "2026-05-03"
+categories: [computing-history]
+draft: true
+---
+
+<!-- Stage 1 outline. AI disclosure callout, full prose, hero image,
+     and any references are added in later stages per AUTHOR_WORKFLOW.md.
+     Target final length: ~600 words (2–3 min read, LinkedIn-clickable). -->
+
+## 1. Hook — the recurring claim, the better question
+
+The "this time the machine does it without us" claim recurs at every
+computing transition. Open by reframing it: the question is never
+*whether* humans are involved, but *where in the system they sit*.
+Set up the article's promise — a five-role grammar that lets you
+locate the humans in any era, including this one.% CLAUDE: Make sure to attribute this to David Mindells myth of autonomy.  Provide link to his amazon book and mention that he was one of my PhD advisors.
+
+## 2. Three sentences of history
+
+Compress 300 years into one paragraph. Newton's calculus → human
+computers at Penn → ENIAC → FORTRAN → MATLAB → CUDA → ML. The
+substrate keeps changing; the structure of the work doesn't. Set up
+the next section: the same five roles run through every one of these
+eras.
+
+
+
+## 3. The five roles, named and located in agentic AI
+
+A single tight paragraph. Define each role in one sentence, then say
+where it lives in a current-day agentic-AI workflow.  % CLAUDE: These should refer more back in time, making the point that these roles are easy to recognize in the recent past and using our familiar labels, we can understand how these new methods will transition.
+% CLAUDE: For each role, point to at least one example from today or the past where that role was easy to identify.
+- **Problem definer** — names what is to be modelled. Today: the human
+  at the prompt, who specifies inputs, outputs, and what counts as a
+  correct answer.  % CLAUDE: Rephrase to emphasize that this has always been the key role - the principle investigator, the innovator, etc.
+- **Compiler** (in the broad sense) — translates the problem into
+  operations the substrate can run. Today: the model's plan-and-
+  decompose step.
+- **Manager** — organizes the work, paces it, handles handoffs.
+  Today: the orchestration / tool-use loop, with a human supervisor
+  for production systems.
+- **Debugger** — catches errors. Today: trace inspection, reruns, and
+  structural checks against a reference implementation or known case.
+- **Validator** — confirms the answer matches reality. Today: still
+  the human, and increasingly load-bearing because the intermediary is
+  no longer inspectable.
+
+## 4. The Mindell payoff — placement, not presence
+
+Bring in the situated-autonomy argument from Mindell's *Our Robots,
+Ourselves*. The rhetorical pattern of overclaiming autonomy is itself
+one of the invariants. Conclude that the right diagnostic question for
+any new system is "where are the humans now?", not "are they still
+needed?".
+
+
