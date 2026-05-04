@@ -7,12 +7,37 @@ categories: [computing-history]
 toc: false
 draft: false
 image: hero.jpg
+doi: 10.5281/zenodo.20018252
+citation: true
+resources:
+  - where-are-the-humans.pdf
 ---
 
+::: {.content-visible when-format="html"}
 ::: {.callout-note appearance="simple" icon=false}
 I write these with Claude Code. I lead, it drafts and revises on my
 instruction, and I review the final carefully before posting. Mistakes
 are mine.
+:::
+:::
+
+::: {.content-visible when-format="pdf"}
+::: {.callout-note appearance="simple" icon=false}
+**AI assistance disclosure.** This essay was drafted in collaboration
+with Claude Code (Anthropic, Claude Opus 4.7). My role: framing the
+argument, supplying sources, directing revisions, and a careful read
+of the final text. Claude's role: drafting and revising on instruction,
+and copyediting. I take full responsibility for the content, including
+any errors.
+:::
+:::
+
+::: {.content-visible when-format="html"}
+[Download PDF](where-are-the-humans.pdf) · DOI: [10.5281/zenodo.20018252](https://doi.org/10.5281/zenodo.20018252)
+:::
+
+::: {.content-visible when-format="pdf"}
+DOI: [10.5281/zenodo.20018252](https://doi.org/10.5281/zenodo.20018252)
 :::
 
 ![Kay McNulty, Alyse Snyder, and Sis Stump operate the differential
