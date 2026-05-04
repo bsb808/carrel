@@ -52,11 +52,3 @@ from "user" or "programmer."
   probably brief.
 - Is the "workflows as interface" claim strong enough to stand alone, or
   does it need a companion piece tracing CLI → GUI → web → workflow?
-
-## Release my ocean and dynamics notes this way
-
-**Sketch.** Publish the existing ocean and dynamics teaching/research notes
-through this site — Quarto rendering, GitHub Pages hosting, Zenodo deposit
-for DOIs and Scholar indexing. Decide whether each note is a standalone
-post, part of a series, or a longer document linked from a landing page.
-Likely warrants its own thread tag once scope is clearer.
