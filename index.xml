@@ -10,7 +10,7 @@
 <atom:link href="https://carrel.bbingham.dev/index.xml" rel="self" type="application/rss+xml"/>
 <description>Short essays on engineering, computation</description>
 <generator>quarto-1.9.37</generator>
-<lastBuildDate>Sun, 03 May 2026 07:00:00 GMT</lastBuildDate>
+<lastBuildDate>Sun, 03 May 2026 00:00:00 GMT</lastBuildDate>
 <item>
   <title>Where Are the Humans?</title>
   <dc:creator>Brian Bingham</dc:creator>
@@ -62,7 +62,7 @@
 </section></div> ]]></description>
   <category>computing-history</category>
   <guid>https://carrel.bbingham.dev/posts/computing-history/where-are-the-humans/</guid>
-  <pubDate>Sun, 03 May 2026 07:00:00 GMT</pubDate>
+  <pubDate>Sun, 03 May 2026 00:00:00 GMT</pubDate>
   <media:content url="https://carrel.bbingham.dev/posts/computing-history/where-are-the-humans/hero.jpg" medium="image" type="image/jpeg"/>
 </item>
 </channel>
