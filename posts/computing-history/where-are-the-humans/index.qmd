@@ -1,167 +1,86 @@
 ---
 title: "Where Are the Humans?"
-description: "Prersistent roles in computing"
+description: "Persistent roles in computing"
 author: "Brian Bingham"
 date: "2026-05-03"
 categories: [computing-history]
 draft: true
+# image: hero.jpg  # TODO: Moore School differential-analyser photo (Wikimedia)
 ---
 
-<!-- Stage 2 annotated outline. Per-section notes, candidate quotes,
-     candidate images, and open questions. AI disclosure callout, full
-     prose, and final image selection are added in stage 3 per
-     AUTHOR_WORKFLOW.md.
+::: {.callout-note appearance="simple" icon=false}
+I write these with Claude Code. I lead, it drafts and revises on my
+instruction, and I review the final carefully before posting. Mistakes
+are mine.
+:::
 
-     Target final length: ~600 words (2-3 min read, LinkedIn-clickable).
+*"AI agents will do the work."* The line is everywhere in 2026, and
+it is the latest installment in a claim every computing transition
+has produced. Each transition restates the same thing: this time, the
+machine handles it without us. Each restatement has been a category
+error.
 
-     Structural changes from stage 1: §4 cut, closing folded into a
-     short coda after §3 (round 1). "Today: ..." mappings removed
-     from every role (round 2) — the article presents the labels and
-     pre-AI anchors; the reader does the mapping to current agentic
-     AI for themselves. -->
+The question to ask of any such claim is not *whether* humans are
+still involved, but *where in the system they sit*. That reframe is
+David Mindell's.[^mindell] What follows is a five-role grammar for
+answering it — names old enough to be recognizable in any era of
+computing.
 
-## 1. Hook — the recurring claim, the better question
+The history is short. Newton's calculus made physics a question of
+rates of change. The 18th century produced equations faster than
+anyone could solve them; the 19th and 20th solved them by organizing
+labour — by hand, in rooms full of women at desks, then by patch
+cable, then by FORTRAN, then by MATLAB, then by CUDA — every layer
+one further abstraction from the work it was doing. Then learning
+entered the picture.
 
-**Argument.** Open with a recognizable autonomy claim from the
-current moment, then reframe it as Mindell's situated-autonomy
-argument: the question is never *whether* humans are involved, but
-*where in the system they sit*. The five-role grammar that follows
-gives names to look for — not a map of where the humans are in any
-specific 2026 workflow.
+The substrate keeps moving. The structure of the work — problem →
+translate → execute → validate — does not. The same five roles run
+through every era, and once you have names for them, they are easy
+to recognize.
 
-**Mindell attribution.** Cite *Our Robots, Ourselves: Robotics and
-the Myths of Autonomy* (Viking, 2015). Brief parenthetical that
-Mindell was one of my PhD advisors. Amazon link to the book.
+**Problem definer.** Names what is to be modelled. The principal
+investigator, the one who decides the question is worth asking. Tools
+come and go; the PI's framing is what makes the work matter. Newton
+asking why planets move in ellipses. Von Neumann at Los Alamos
+framing the H-bomb hydrodynamics problem so it could be computed at
+all.
 
-**Opening quote (chosen).** *"AI agents will do the work."* Generic,
-instantly recognizable as the 2026 framing. The article doesn't need
-a real attribution to land — what matters is that the reader
-recognizes the move.
+**Compiler** (in the broad sense). Translates a problem stated in
+domain language into operations the substrate can run. The role has
+existed since the mid-19th century — only its embodiment migrates:
+person, then patch panel, then software, then trained model.
+Gertrude Blanch as technical director of the WPA Mathematical Tables
+Project (1938–48), decomposing calculus into worksheets ~450
+unemployed clerks could execute with arithmetic alone, has a strong
+claim to "most important compiler of the pre-electronic era."
 
-**Open questions.**
+**Manager.** Organizes the work, paces it, handles handoffs.
+Williamina Fleming managing "Pickering's computers" at Harvard
+Observatory in the 1880s. Dana Mitchell organizing human-computer
+teams at Los Alamos in the 1940s.
 
-- Footnote vs parenthetical for the Mindell PhD-advisor disclosure?
-- Pin the opening quote to a specific 2025/2026 executive (Altman,
-  Amodei, Nadella, etc.) with a verifiable line, or keep it generic
-  and present as the kind of claim 2026 keynote stages make? Defer
-  to stage 3 unless you want to lock now.
+**Debugger.** Catches errors *without trusting any individual step.*
+L. J. Comrie's differencing method at the British Nautical Almanac
+Office. Duplicate computation by independent clerks, with a third
+resolving disagreements — the ancestor of triple modular redundancy
+in modern fault-tolerant systems. The shape of the work catches the
+error, not the insight of any single computer.
 
-**Candidate images.** No image for §1; let the title and pull quote
-carry the opening. Hero image (whole article) handled at §3.
+**Validator.** Confirms the answer matches reality. The role that
+has *never* moved off the human side, in any era. The senior
+scientist spot-checking against physical intuition or limiting cases
+where the answer is known by other means. Worth noting: validation
+has been getting more load-bearing across every transition, because
+each new layer makes the intermediary harder to inspect from the
+inside. That trend is sixty years old; this article does not predict
+where it ends.
 
-## 2. Three sentences of history
+Where are the humans in agentic AI? That is the reader's question,
+not the article's. These five labels have been recognizable for three
+centuries; the next layer of computation will be the next place to
+look for them. The article's gift is the names, not the map.
 
-**Argument.** Compress 300 years into a single tight paragraph. The
-point is not to teach the history — it is to establish that the
-*structure of the work* (problem → translate → execute → validate)
-has not changed since calculus, while the substrate keeps moving
-under it.
-
-**Compression sequence.** Newton's calculus → human computers at
-Penn → ENIAC (1945) → FORTRAN (1957) → MATLAB (1984) → CUDA (2007)
-→ ML (2020s).
-
-**Closing setup sentence.** "The same five roles run through every
-one of these eras, and once you have names for them, they are easy
-to recognize."
-
-**Candidate quotes (optional).**
-
-- Backus on the FORTRAN reception: assembly programmers were a
-  *"priesthood"* who met the project with *"considerable hostility
-  and derision."* Useful if §2 wants a real voice underneath the
-  compression. Source: research-file "previous-transition quotes".
-
-**Candidate inline image.** A representative artifact — ENIAC patch
-panel close-up.
-[Wikimedia: ENIAC](https://commons.wikimedia.org/wiki/Category:ENIAC).
-
-## 3. The five roles — old labels, recognizable across every era
-
-**Argument.** The grammar. For each role: a one-sentence definition
-and a concrete pre-AI example where the role was easy to identify
-and easy to name. The article stops there. Whatever the next
-workflow looks like, these labels are what to look for — the work
-of mapping them onto a 2026 agentic-AI pipeline (or whatever
-follows it) is the reader's, not the article's.
-
-**Candidate hero image for the article.** The Moore School
-differential-analyser photo of Kay McNulty, Alyse Snyder, and Sis
-Stump (c. 1942–45). On-message: "where are the humans?" — they are
-in the photo, in plain view.
-[Wikimedia: Kathleen Antonelli](https://commons.wikimedia.org/wiki/Category:Kathleen_Antonelli).
-License: pre-1989 US Army publication, public domain.
-
-### Problem definer
-
-- Always the key role; tools come and go, the PI's framing is what
-  makes the work matter.
-- *Example.* Newton: why do planets move in ellipses? Von Neumann
-  at Los Alamos: framing the H-bomb hydrodynamics problem so it
-  could be computed at all.
-- Source: research-file "human-computer era in detail" for von
-  Neumann.
-
-### Compiler (in the broad sense)
-
-- Translates a problem stated in domain language into operations
-  the substrate can run. The role has existed continuously since
-  the mid-19th century — only its embodiment migrates (person →
-  patch panel → software → trained model).
-- *Example.* Gertrude Blanch as technical director of the WPA
-  Mathematical Tables Project (1938–48), decomposing calculus into
-  worksheets ~450 unemployed clerks could execute with arithmetic
-  alone — strong claim to "most important compiler of the
-  pre-electronic era." Also the ENIAC programmer turning math into
-  a wiring diagram.
-- Candidate inline quote: Lovelace, *"The Analytical Engine has no
-  power of originating anything. It can only do what we know how to
-  order it to perform."*
-- Sources: research-file "What is a compiler in the general sense?",
-  "human-computer era in detail."
-
-### Manager
-
-- Organizes the work, paces it, handles handoffs.
-- *Example.* Williamina Fleming managing "Pickering's computers"
-  at Harvard Observatory; Dana Mitchell organizing human-computer
-  teams at Los Alamos.
-- Sources: research-file "human-computer era in detail"; "mapping
-  the same roles."
-
-### Debugger
-
-- Catches errors *without trusting any individual step.* Errors are
-  caught by the structure of the work, not by individual insight —
-  the same logic as modern type checking and unit tests.
-- *Example.* L. J. Comrie's differencing method at the British
-  Nautical Almanac Office; duplicate computation by independent
-  clerks with a third resolving disagreements (the ancestor of
-  triple modular redundancy).
-- Sources: research-file "human-computer era in detail."
-
-### Validator
-
-- Confirms the answer matches reality. The role that has *never*
-  moved off the human side, in any era. The piece's strongest claim.
-- *Example.* The senior scientist spot-checking against physical
-  intuition or limiting cases where the answer is known by other
-  means.
-- *Historical pattern (worth a sentence in prose).* Validation has
-  been getting more important across every transition — because
-  each new layer has made the intermediary harder to inspect from
-  the inside. The trend is 60 years old. The article does not
-  predict where it ends; it just names the role.
-- Source: research-file "validation gap widens with each
-  abstraction".
-
-## Closing coda (replaces deleted §4)
-
-**Argument.** One short paragraph. Hand the question forward —
-don't answer it. The move: these five labels have been recognizable
-for 300 years. Whatever the next layer of computation looks like,
-the question *where are the humans now?* is one the reader is
-better positioned than the article to answer. That is the article's
-gift — not a map, but the names.
-
-**Length target.** Two to three sentences max.
+[^mindell]: David A. Mindell, [*Our Robots, Ourselves: Robotics and
+the Myths of Autonomy*](https://www.amazon.com/Our-Robots-Ourselves-Robotics-Autonomy/dp/0143109065)
+(Viking, 2015). Mindell was one of my PhD advisors.
