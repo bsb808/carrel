@@ -162,13 +162,25 @@ is being deprecated as a separate repo.
       - `CLAUDE.md` — one paragraph pointer to the new section
       - `AUTHOR_WORKFLOW.md` — note Stage 5 deltas (or add Stage 5b)
 
-- [ ] **Release spectra & stochastic-simulation notes.** Start with
-      `techreport_timeseries_from_psd.tex` — most release-ready (formal
-      abstract, NPS techreport polish, dated April 2023). Render PDF,
-      deposit to Zenodo, write companion essay, publish. Then assess
-      `spectra_notes.tex`: separate release or folded into the techreport
-      essay? Thread tag: `spectra` (or preferred name — settle in the
-      umbrella TODO).
+- [ ] **Release the stochastic-simulation techreport
+      (`techreport_timeseries_from_psd.tex`).** Drafted 2026-05-03 in
+      `posts/wave-spectra-sim/spectra-from-psd/`. Thread tag:
+      `wave-spectra-sim`. PDF reformatted from the original NPS class
+      to `IEEEtran[journal]` (7 pages). Companion essay drafted; AI
+      disclosure wording settled (now in `CONVENTIONS.md`). Remaining:
+      Zenodo deposit (Stage 5b steps 2–3), DOI wire-in to `.tex` +
+      `index.qmd`, push, verify live. Two known content typos in the
+      `.tex` flagged for PMR: eq. line 168 has `\frac{1}{2 pi}`
+      (should be `\frac{1}{2 \pi}`) and two `\Sigma_{xx}(f=\omega/(2\pi)`
+      terms missing closing parens.
+
+- [ ] **Release `spectra_notes.tex`** (wave spectra: Phillips,
+      Pierson-Moskowitz, Bretschneider). Deferred from the
+      techreport release on 2026-05-03 — distinct topic and less
+      polished (still has working-notes highlight macros). Same
+      pattern, same `wave-spectra-sim` thread tag. Decide first
+      whether the working notes are release-ready or need an
+      editorial pass.
 
 - [ ] **Release sonar beam notes** (`sonar_beam_notes.tex`). Same
       pattern. Seeds a `sonar` (or `acoustics`) thread; one post for now,

@@ -207,17 +207,41 @@ posts/<thread>/<slug>/
 ├── <slug>.tex       # LaTeX source (renamed to match slug)
 ├── <slug>.pdf       # the deposited PDF
 ├── hero.<ext>       # hero image (often a key figure from the PDF)
-├── <figure>.png     # per-note figures
-└── <support>.cls    # shared .cls/.sty/.bst/.bib copied per-note
+├── images/          # per-note figures referenced by the .tex
+├── <slug>.bib       # bibliography (or bbing_master.bib copied in)
+└── <custom>.sty     # only any custom .sty/.cls/.bst not on CTAN
 ```
 
-Shared LaTeX resources (e.g. `npsreport2018.cls`, `math_bbing.sty`,
-`bbing_master.bib`) are copied into each post folder rather than
-centralized — self-contained folders are easier to reason about and
-survive future restructuring at modest storage cost.
+Per-note figures and bibliography live alongside the `.tex` (the
+first migration kept the original `images/` subfolder so the `.tex`
+`\includegraphics{images/...}` lines didn't need editing). Bibliography
+is `bbing_master.bib` copied per folder — self-contained folders are
+easier to reason about, and the duplication cost is small.
 
 The `.tex` filename matches the slug, not the original filename
 (e.g. `techreport_timeseries_from_psd.tex` → `spectra-from-psd.tex`).
+
+#### Document class: prefer CTAN over custom
+
+When a note's original `.tex` used a custom institutional class file
+(e.g. NPS's `npsreport2018.cls` with its `nps_sf298.sty`,
+`npsthesis.bst`, etc.), reformat to a standard CTAN class instead of
+copying the custom files into the post folder. The first migration
+adopted **`IEEEtran[journal]`** — two-column journal style, available
+in any TeX Live install, no per-folder class/sty/bst dependencies.
+Use this as the default for migrated notes unless the original style
+is essential to the artifact's identity.
+
+Reformatting touches only the preamble and the bibliography tail;
+the body (sections, equations, figures, captions, citations) is
+preserved verbatim. The PDF gets meaningfully shorter (the first
+migration went from 20 pages NPS-format to 7 pages IEEEtran).
+Convert wide figures and tables to `figure*`/`table*` so they span
+both columns.
+
+LaTeX aux files (`*.aux`, `*.log`, `*.bbl`, `*.blg`, `*.fls`,
+`*.fdb_latexmk`, `*.out`, `*.synctex.gz`) are gitignored at the
+repo root.
 
 ### Categories
 
@@ -264,10 +288,22 @@ renders one `.qmd` to both HTML and PDF.
 
 ### AI disclosure
 
-Standard web callout, with one added sentence noting that the
-technical note itself predates AI assistance and only the companion
-essay was drafted with Claude Code. Exact wording will settle during
-the first migration.
+Standard web callout, plus one added sentence noting the asymmetry
+between the (pre-AI) technical note and the (AI-drafted) companion
+essay. Settled wording, from the first migration:
+
+```markdown
+::: {.callout-note appearance="simple" icon=false}
+I write these with Claude Code. I lead, it drafts and revises on my
+instruction, and I review the final carefully before posting. Mistakes
+are mine. The technical note itself predates AI assistance; only this
+companion essay was drafted with Claude.
+:::
+```
+
+The added third sentence ("The technical note itself predates AI
+assistance; only this companion essay was drafted with Claude.") is
+the only divergence from the standard `DISCLAIMER.md` web callout.
 
 ### Drafting and deposit
 

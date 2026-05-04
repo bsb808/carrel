@@ -216,8 +216,17 @@ Commit message: `<slug>: wire in Zenodo DOI <DOI>`.
 
 **AI disclosure asymmetry.** The `.tex` source predates AI assistance;
 only the companion essay is AI-drafted. The disclosure callout in
-`index.qmd` should note this. Exact wording will settle during the
-first migration.
+`index.qmd` notes this with one added sentence appended to the standard
+`DISCLAIMER.md` web callout: *"The technical note itself predates AI
+assistance; only this companion essay was drafted with Claude."* Full
+wording is in `CONVENTIONS.md` § Technical-note + companion-essay
+→ AI disclosure.
+
+**Reference run.** First exercised on `spectra-from-psd`, 2026-05-03
+(Zenodo deposit pending). Document-class deviation: switched from
+the original NPS class to `IEEEtran[journal]` to drop per-folder
+class/sty/bst dependencies — see CONVENTIONS.md § "Document class:
+prefer CTAN over custom".
 
 **OceanNotes deprecation.** Each migrated note is removed from (or
 marked-as-moved in) `~/WorkingCopies/OceanNotes/`. Once all migrations
