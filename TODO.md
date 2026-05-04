@@ -4,27 +4,36 @@ Running list of deferred work. Strike items as they're completed.
 
 ## Setup
 
-- [ ] **Personalization sweep for `carrel`.** Replace placeholders across the
-      repo now that the name is decided. Wait until vocabulary is settled and
-      the first article is drafted, so site title and tagline can be anchored
-      against real content. Touches:
-      - `PLAN.md` (placeholder language)
-      - `_quarto.yml` — site title, description, `site-url` (will be
-        `https://carrel.bbingham.dev`), author block, ORCID
-      - `CITATION.cff` — name, ORCID, repo URL
-      - `about.qmd` — bio, GitHub/LinkedIn links
-      - `index.qmd` — tagline, intro paragraph
-      - `README.md` — replace `yourname` placeholders
+- [x] **Personalization sweep for `carrel`.** Done in commits
+      `0c6bf2d`–`b50f2ae` and `5f6e615`: about.qmd, index.qmd,
+      _quarto.yml, LICENSE, CITATION.cff, README.md, profile photo,
+      deploy workflow, hero image. See `HANDOFF.md` for the full
+      checkpoint.
 
-- [ ] **Configure DNS for `carrel.bbingham.dev`.** Add CNAME record at
-      registrar pointing to `bsb808.github.io`. Add custom domain in repo
-      Settings → Pages. GitHub auto-provisions Let's Encrypt.
+- [ ] **Verify deploy Action goes green.** Check at
+      <https://github.com/bsb808/carrel/actions>, or `gh run list`
+      from a machine with `gh` CLI.
 
-- [ ] **Connect repo to GitHub Pages** (Settings → Pages → `gh-pages` branch).
+- [ ] **Configure DNS for `carrel.bbingham.dev`** at Porkbun.
+      CNAME `carrel` → `bsb808.github.io`. The existing wildcard
+      `*.bbingham.dev` is fine to leave; specific records take
+      precedence.
 
-- [ ] **Connect repo to Zenodo** (zenodo.org → GitHub → toggle the repo on).
+- [ ] **Connect repo to GitHub Pages.** Settings → Pages → Source
+      "Deploy from a branch", Branch `gh-pages`, Folder `/ (root)`,
+      Custom domain `carrel.bbingham.dev`. Enable "Enforce HTTPS"
+      only after the DNS check goes green and the cert finishes
+      provisioning.
 
-- [ ] **Verify a test deploy succeeds** before the first real article.
+- [ ] **Connect repo to Zenodo.** zenodo.org → sign in with GitHub →
+      Settings → GitHub → toggle `bsb808/carrel` on.
+
+- [ ] **End-to-end verification.** Visit
+      <https://carrel.bbingham.dev>, confirm landing page lists the
+      article, click through to verify hero image, callout,
+      footnotes. Test LinkedIn preview card.
+
+- [ ] **Delete `HANDOFF.md`** once the site is live and verified.
 
 ## Migrate technical notes from `~/WorkingCopies/OceanNotes/`
 
