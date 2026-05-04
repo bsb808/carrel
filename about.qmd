@@ -1,0 +1,26 @@
+---
+title: "About"
+---
+
+I'm Brian Bingham, a professor of Mechanical and Aerospace Engineering
+at the Naval Postgraduate School in Monterey, California, and a
+co-founder of [Honu Robotics](https://honurobotics.com/). My research
+is on marine robotics — autonomous surface and underwater vehicles,
+the simulation environments they're tested in, and the controls and
+navigation that hold them together. I did my PhD at MIT (mechanical
+engineering, 2003).
+
+This site is a place for short essays and technical notes — working
+thoughts shared with colleagues earlier than a paper would allow,
+revised over time as my thinking does. Substantive pieces are
+archived to Zenodo for DOIs and Google Scholar indexing. The audience
+is engineering academics, educators, and the occasional curious
+student.
+
+Elsewhere:
+
+- [Google Scholar](https://scholar.google.com/citations?user=Q8uyljgAAAAJ&hl=en)
+- [LinkedIn](https://www.linkedin.com/in/briansbingham/)
+- [GitHub](https://github.com/bsb808)
+- [ORCID](https://orcid.org/0009-0007-8261-3108)
+- Email: briansbingham@gmail.com
