@@ -66,7 +66,8 @@ landing-page framing.
    improve headings, check internal links.
 3. **Prepare a Zenodo deposit.** Render the post to PDF, draft the Zenodo
    metadata (title, description, keywords, authors, license), and after the
-   user supplies the minted DOI, update the post's front matter.
+   user supplies the minted DOI, update the post's front matter. Full
+   procedure: `AUTHOR_WORKFLOW.md` Stage 5 (per-article manual deposits).
 4. **Maintain the site.** Update `_quarto.yml`, tune `styles.css`, adjust
    the GitHub Actions workflow, fix broken builds.
 

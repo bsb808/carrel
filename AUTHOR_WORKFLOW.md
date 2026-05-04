@@ -65,7 +65,89 @@ image captions, disclaimer wording. Claude does not propose structural
 changes at stage 4 unless asked.
 
 Commit message: `final: <article-slug>`. The article is ready to render
-and (optionally) deposit to Zenodo.
+and (optionally) move to Stage 5 for a Zenodo deposit.
+
+### Stage 5 — Zenodo deposit (per-article DOI)
+
+Optional. Substantive long-form pieces (typically 1500+ words, with
+sources) get a per-article Zenodo deposit and a citable DOI. One-off
+notes, status updates, and operational posts skip it.
+
+The deposit is *manual* (path A in `PLAN.md` / `HANDOFF.md`): each
+article gets its own concept DOI rather than one repo-level DOI for
+the whole carrel. This is the model Google Scholar expects for
+discrete works.
+
+Procedure:
+
+1. **Format-conditional AI disclosure.** Confirm the article wraps
+   the web callout in `{.content-visible when-format="html"}` and
+   provides an expanded `{.content-visible when-format="pdf"}`
+   variant per `DISCLAIMER.md`.
+
+2. **Render the PDF locally:**
+
+   ```bash
+   quarto render posts/<thread>/<slug>/index.qmd \
+     --to pdf --pdf-engine pdflatex
+   ```
+
+   The PDF lands at `_site/posts/<thread>/<slug>/index.pdf`. Read it
+   end-to-end — figures, footnotes, AI disclosure swap, page count.
+
+3. **Upload to Zenodo (web UI).** At zenodo.org → *New upload*. Drag
+   the PDF in. Fill metadata:
+
+   - Resource type: *Publication → Preprint*
+   - Creators with ORCID
+   - License: *CC-BY-4.0*
+   - Description: one-paragraph abstract
+   - Keywords: thread + key concepts
+   - Related identifier: URL of the live page; scheme *URL*;
+     relation *is identical to*
+   - Click **Reserve DOI** before publishing — gives the DOI string
+     to wire into the article *before* the deposit becomes immutable.
+
+4. **Wire the DOI in (commit on `main`):**
+
+   - Front-matter additions:
+
+     ```yaml
+     doi: 10.5281/zenodo.<NNNNNNNN>
+     citation: true
+     resources:
+       - <slug>.pdf
+     ```
+
+   - Add a format-conditional download/cite block above the hero
+     image: HTML shows `[Download PDF](<slug>.pdf) · DOI: …`; PDF
+     shows `DOI: …` only.
+   - Re-render the PDF (now has the DOI on its title page).
+   - Stage the rebuilt PDF in the post folder as `<slug>.pdf` (not
+     `index.pdf` — avoids confusion with Quarto build output).
+   - Commit + push. Auto-deploy puts the DOI live.
+
+5. **Replace and publish on Zenodo.** Back on the draft, swap the
+   originally-uploaded PDF for the freshly-rendered one (which now
+   shows the DOI on page 1). Click **Publish**. The deposit becomes
+   immutable; the DOI activates.
+
+6. **Verify:**
+
+   - `https://doi.org/10.5281/zenodo.<NNNNNNNN>` resolves
+   - Live page renders with DOI + Download PDF link
+   - PDF served from the live URL returns HTTP 200
+
+Commit message: `<slug>: wire in Zenodo DOI <DOI>`.
+
+**Versioning.** Substantive revisions after deposit warrant a new
+Zenodo *version* (same concept DOI, new version DOI). Minor
+copy-edits to the live HTML don't — the deposit stays the citable
+version-of-record at the date of deposit. Note this in the Zenodo
+description.
+
+**Reference run:** First exercised on `where-are-the-humans`,
+2026-05-03 → DOI [10.5281/zenodo.20018252](https://doi.org/10.5281/zenodo.20018252).
 
 ## When to deviate
 

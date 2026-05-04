@@ -28,16 +28,17 @@ Running list of deferred work. Strike items as they're completed.
       <https://carrel.bbingham.dev> — landing page lists the
       article, hero image and callout render.
 
-- [ ] **Connect repo to Zenodo.** zenodo.org → sign in with GitHub →
-      Settings → GitHub → toggle `bsb808/carrel` on.
+- [ ] **Connect repo to Zenodo (path B option, deferred).**
+      zenodo.org → Settings → GitHub → toggle `bsb808/carrel` on.
+      Only needed if a repo-level concept DOI is ever wanted *in
+      addition* to per-article DOIs. Path A (per-article manual
+      deposits) is the canonical model and does not require this.
 
-- [ ] **First-article archival pass.** Once Zenodo is connected:
-      (1) full editorial review of the site — landing page, about,
-      and the `where-are-the-humans` article end-to-end; fix any
-      issues; (2) tag a GitHub release; (3) Zenodo auto-deposits
-      and mints a DOI from `CITATION.cff`; (4) add `doi:` and
-      `citation: true` to the article front-matter (per
-      `CLAUDE.md`), commit, push.
+- [x] **First-article archival pass.** Done 2026-05-03 via path A.
+      `where-are-the-humans` →
+      [10.5281/zenodo.20018252](https://doi.org/10.5281/zenodo.20018252).
+      Procedure now documented as `AUTHOR_WORKFLOW.md` Stage 5;
+      apply to subsequent substantive articles.
 
 - [ ] **LinkedIn preview card check.** Draft (don't post) a
       LinkedIn share of the live URL; confirm the OG card shows
