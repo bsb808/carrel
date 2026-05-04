@@ -1,0 +1,86 @@
+---
+title: "A unified six-DoF model for the CUSV"
+description: "A 2020 working note that parameterises a Fossen-style marine-craft model for a representative unmanned surface vessel — combining manoeuvring and seakeeping in one Gazebo plugin."
+author: "Brian Bingham"
+date: "2026-05-03"
+categories: [technical-note, usv-control]
+toc: false
+draft: false
+image: hero.png
+citation: true
+resources:
+  - cusv-model.pdf
+---
+
+::: {.callout-note appearance="simple" icon=false}
+I write these with Claude Code. I lead, it drafts and revises on my
+instruction, and I review the final carefully before posting. Mistakes
+are mine. The technical note itself (the PDF) predates this workflow
+and was drafted entirely without AI assistance; only this companion
+essay was written with Claude Code.
+:::
+
+[Download PDF](cusv-model.pdf)
+
+![Wave-slope spectra alongside the vessel pitch and roll responses
+expressed as transfer functions — Figure 10 of the technical note.
+The unified model lets a simulator drive seakeeping responses
+directly from a chosen sea state.](hero.png)
+
+> *"For the purposes of supporting the development of autonomy, it is
+> important that the unified simulation model include both
+> manoeuvring and seakeeping degrees-of-freedom. The manoeuvring
+> aspects of the model influence the vessel steering and control
+> portion of the autonomy solution. The inclusion of the seakeeping
+> aspect of the model is critical for exercising the sensory
+> perception portion of the autonomy solution."*
+
+The note collects a self-consistent set of parameters for a
+six-degree-of-freedom marine-craft model adapted from Fossen's
+*Handbook of Marine Craft Hydrodynamics and Motion Control* and
+implemented as a Gazebo physics-engine plugin. The vessel of record
+is the Common Unmanned Surface Vessel (CUSV), a 12-metre, 33-tonne
+catamaran serving as a representative platform.
+
+Surface-vessel models are traditionally split in two: *manoeuvring*
+models cover surge, sway and yaw; *seakeeping* models cover heave,
+roll and pitch. For autonomy work that split is awkward.
+A controller that only sees manoeuvring degrees of freedom cannot
+exercise the perception stack against the same waves that move the
+boat. The note documents a single parameter set that does both.
+
+The hydrodynamic derivatives come from where the literature has the
+strongest theoretical or empirical support: Sarda *et al.* for the
+manoeuvring-plane added masses, Greenhow & Lin for the
+partially-submerged-cylinder seakeeping terms, Holtrop's method and
+ITTC-1957 for drag, with the seakeeping coefficients then sanity-checked
+against step-response tests of the time-domain implementation
+(logarithmic-decrement identification of a second-order transfer
+function in heave, pitch and roll). The resulting frequency-domain
+model lets the simulator drive vessel motion directly from a chosen
+wave-height spectrum — see the wave-slope-vs-pitch/roll figure above.
+
+I am releasing this for two reasons. The first is utility: this
+parameterisation underpinned the CUSV branch of the WAM-V Gazebo
+plugin used in Virtual RobotX (VRX), and it is the kind of artefact
+other robotics groups end up reconstructing from Fossen's text and
+half a dozen papers. Having a worked example that names the chosen
+references and shows the resulting numbers is useful when you are
+trying to do the same job for a different hull. The second reason is
+pedagogical: the note is a compact tour of the steps a graduate
+student needs to take to go from "we want to simulate a boat" to "we
+have hydrodynamic derivatives the physics engine can integrate". It
+is not a complete textbook; it is a worked example with citations
+back to the literature for the parts that are.
+
+The audience, then, is engineers and graduate students building or
+calibrating surface-vessel simulators — particularly those using
+Gazebo or Ignition, or any environment where the model has to be
+parameterised explicitly rather than absorbed from a vendor's CAD
+package.
+
+The technical content is unchanged from the original draft of
+1 October 2020. The release version cleans up the LaTeX preamble,
+self-contains the bibliography, and adds a provenance footnote.
+The Zenodo deposit (DOI to follow) dates the *release*, not the
+science.
