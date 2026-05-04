@@ -36,7 +36,9 @@ computing.
 
 The history is short. Newton's calculus made physics a question of
 rates of change. The 18th century produced equations faster than
-anyone could solve them (In 2026 we are still searching for general solutions to some of these problems! % CLAUDE: insert footnote.  I think there are still math grand prises for solving navier-stokes equations?). By 1821, Charles Babbage was looking up from a table of errors and
+anyone could solve them — and in 2026 some still resist a general
+solution.[^millennium] By 1821, Charles Babbage was looking up from a
+table of errors and
 writing *"I wish to God these calculations had been executed by
 steam."*[^babbage]
 Layer by layer: by hand,
@@ -55,7 +57,7 @@ the PI's framing is what makes the work matter. Newton asking why
 planets move in ellipses. Von Neumann at Los Alamos framing the
 H-bomb hydrodynamics problem so it could be computed at all.
 
-**Compiler:** (in the broad sense). Translates a problem stated in
+**Compiler (in the broad sense):** Translates a problem stated in
 domain language into operations the substrate can run. The role has
 existed since the mid-19th century — only its embodiment migrates:
 human "computers", then patch panel, then software, then trained
@@ -81,7 +83,7 @@ in modern fault-tolerant systems. The shape of the work catches the
 error, not the insight of any single computer — the same principle
 behind GPS message checksums and memory parity bits.
 
-**Validator.** Confirms the answer matches reality. The role that has
+**Validator:** Confirms the answer matches reality. The role that has
 yet to move off the human side, in any era. The senior scientist
 spot-checking against physical intuition or limiting cases where the
 answer is known by other means. Worth noting: validation has been
@@ -107,3 +109,8 @@ layer of computation may be the next place to look for them.
 
 [^vn]: As recounted by John Backus; see, e.g., his reflections in
     [The New Stack](https://thenewstack.io/how-john-backus-fortran-beat-machine-codes-priesthood/).
+
+[^millennium]: The Clay Mathematics Institute's Millennium Prize
+    Problems include the existence and smoothness of solutions to
+    the Navier–Stokes equations of fluid flow, with a $1 million
+    prize for a proof. As of 2026 it remains unclaimed.
