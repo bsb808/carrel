@@ -34,6 +34,13 @@ find the same content via DOI in Scholar.
 - Images live alongside the post that uses them, not in a global assets dir.
 - Bibliography, when needed, lives in the post folder as `references.bib`
   and is referenced from front matter.
+- AI co-authorship disclosure: every article includes the web callout
+  from `DISCLAIMER.md` above the first heading. The expanded form is
+  used for Zenodo PDFs. Disclosure is added in stage 3 of article
+  development, not earlier.
+- Article development: substantive articles are developed in stages per
+  `AUTHOR_WORKFLOW.md` — outline → annotated outline → draft → final —
+  with a PMR review between stages.
 
 ## Thread structure thresholds
 
