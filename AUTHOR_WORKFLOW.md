@@ -149,6 +149,81 @@ description.
 **Reference run:** First exercised on `where-are-the-humans`,
 2026-05-03 → DOI [10.5281/zenodo.20018252](https://doi.org/10.5281/zenodo.20018252).
 
+### Stage 5b — Zenodo deposit for externally-rendered technical notes
+
+For pre-existing LaTeX technical notes (originally in `OceanNotes`),
+the deposit procedure differs from Stage 5: the PDF is rendered from
+`<slug>.tex` via `pdflatex`/`latexmk`, not from `index.qmd` via
+Quarto. The companion essay (`index.qmd`) is HTML-only and links to
+the deposited PDF. See `CONVENTIONS.md` § Technical-note +
+companion-essay for the surrounding pattern.
+
+Procedure:
+
+1. **Render the PDF locally:**
+
+   ```bash
+   cd posts/<thread>/<slug>/
+   latexmk -pdf <slug>.tex
+   ```
+
+   Proofread end-to-end — figures, footnotes, page count.
+
+2. **Upload to Zenodo (web UI).** At zenodo.org → *New upload*. Drag
+   the PDF in. Fill metadata:
+
+   - Resource type: *Publication → Technical note* (not *Preprint*)
+   - Creators with ORCID
+   - License: *CC-BY-4.0*
+   - Description: one-paragraph abstract (often the note's own
+     abstract)
+   - Keywords: thread + key concepts
+   - Related identifier: URL of the live companion-essay page;
+     scheme *URL*; relation *is identical to*
+   - Click **Reserve DOI** before publishing.
+
+3. **Inject the DOI into `<slug>.tex`** as a one-line title-page
+   footer, then re-render with `latexmk -pdf`. Exact macro will
+   settle during the first migration.
+
+4. **Wire the DOI into the companion essay** (commit on `main`):
+
+   - Front-matter additions:
+
+     ```yaml
+     doi: 10.5281/zenodo.<NNNNNNNN>
+     citation: true
+     resources:
+       - <slug>.pdf
+     ```
+
+   - Add the download/cite block in the body:
+     `[Download PDF](<slug>.pdf) · DOI: …`
+   - Commit + push (PDF, `.tex`, `index.qmd` together). Auto-deploy
+     puts the DOI live.
+
+5. **Replace and publish on Zenodo.** Swap the originally-uploaded
+   PDF for the DOI-stamped one, then click **Publish**. The deposit
+   becomes immutable; the DOI activates.
+
+6. **Verify:**
+
+   - `https://doi.org/10.5281/zenodo.<NNNNNNNN>` resolves
+   - Live page renders with DOI + Download PDF link
+   - PDF served from the live URL returns HTTP 200
+
+Commit message: `<slug>: wire in Zenodo DOI <DOI>`.
+
+**AI disclosure asymmetry.** The `.tex` source predates AI assistance;
+only the companion essay is AI-drafted. The disclosure callout in
+`index.qmd` should note this. Exact wording will settle during the
+first migration.
+
+**OceanNotes deprecation.** Each migrated note is removed from (or
+marked-as-moved in) `~/WorkingCopies/OceanNotes/`. Once all migrations
+are complete, archive that repo with a final tag and a README pointer
+to carrel.
+
 ## When to deviate
 
 Skip stages for short pieces. A one-paragraph technical note doesn't

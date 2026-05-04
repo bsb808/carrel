@@ -177,3 +177,105 @@ image: <hero-image.png>
   genuinely belongs to both — e.g. a `usv-control` project article
   that also fits an `engineering-pedagogy` thread. Flag as unusual
   when it happens.
+
+## Technical-note + companion-essay pattern
+
+A specialized pattern for releasing pre-existing LaTeX technical notes
+(originally drafted in `~/WorkingCopies/OceanNotes/`) on the site. The
+pattern keeps the technical writing in its native form (PDF rendered
+from `.tex`) while giving it a friendly entry point on the web.
+
+### Two-artifact model
+
+Every release is two co-located artifacts:
+
+- **The technical note** — PDF rendered from a `.tex` source. The
+  primary scholarly artifact; carries the DOI.
+- **The companion essay** — a short (~300–700 word) `index.qmd` that
+  frames the note for a general engineering audience and links to the
+  PDF for download.
+
+Reading and citing diverge: a colleague on LinkedIn finds the essay; a
+researcher in Google Scholar finds the PDF via DOI. Both point at the
+same work.
+
+### Folder layout
+
+```
+posts/<thread>/<slug>/
+├── index.qmd        # companion essay
+├── <slug>.tex       # LaTeX source (renamed to match slug)
+├── <slug>.pdf       # the deposited PDF
+├── hero.<ext>       # hero image (often a key figure from the PDF)
+├── <figure>.png     # per-note figures
+└── <support>.cls    # shared .cls/.sty/.bst/.bib copied per-note
+```
+
+Shared LaTeX resources (e.g. `npsreport2018.cls`, `math_bbing.sty`,
+`bbing_master.bib`) are copied into each post folder rather than
+centralized — self-contained folders are easier to reason about and
+survive future restructuring at modest storage cost.
+
+The `.tex` filename matches the slug, not the original filename
+(e.g. `techreport_timeseries_from_psd.tex` → `spectra-from-psd.tex`).
+
+### Categories
+
+Two tags:
+
+- `technical-note` — meta tag identifying companion-to-PDF essays
+  (singular, per the "avoid plurals" lean above).
+- The topical thread tag — `spectra`, `sonar`, `usv-control`, etc.
+
+### Front matter
+
+```yaml
+title: <human-friendly title; not necessarily the PDF title>
+description: <one-sentence summary aimed at LinkedIn readers>
+author: Brian Bingham
+date: <publication date on this site>
+categories: [technical-note, <thread-tag>]
+image: hero.<ext>
+doi: 10.5281/zenodo.NNNNNNNN
+citation: true
+resources:
+  - <slug>.pdf
+```
+
+The `date` field is the publication date on the carrel, not the
+original `.tex` date. Original-write date goes in the body as
+provenance.
+
+### Companion-essay body
+
+About 300–700 words, structured as:
+
+1. Pull quote or abstract excerpt as a callout.
+2. What the note is.
+3. Why it's being released now.
+4. Who it's for.
+5. Original date / provenance.
+6. Download block: `[Download PDF](<slug>.pdf) · DOI: …`
+
+No format-conditional (`when-format`) blocks — the `.qmd` is HTML-only,
+since the deposited PDF is rendered separately from the `.tex`. This
+is the main divergence from the standard article pattern, which
+renders one `.qmd` to both HTML and PDF.
+
+### AI disclosure
+
+Standard web callout, with one added sentence noting that the
+technical note itself predates AI assistance and only the companion
+essay was drafted with Claude Code. Exact wording will settle during
+the first migration.
+
+### Drafting and deposit
+
+The companion essay is short enough to collapse `AUTHOR_WORKFLOW.md`'s
+four-stage process — single annotated-outline pass, then draft, then
+PMR. The Zenodo deposit procedure is `AUTHOR_WORKFLOW.md` Stage 5b.
+
+### Landing page
+
+A `technical-notes.qmd` landing page is deferred until 3+ technical
+notes exist on the site (per the threshold in `CLAUDE.md`).

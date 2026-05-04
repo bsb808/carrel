@@ -54,22 +54,113 @@ Each technical note follows the same pattern: render the existing `.tex`
 to PDF, deposit the PDF to Zenodo for an arXiv-style citable ID (DOI),
 and publish a companion essay on the site that summarizes the work, says
 why it's being released, and links to the DOI'd PDF for download. The
-`.tex` source stays in `OceanNotes`; only the rendered PDF and the
-companion essay land here.
+`.tex` source moves into `carrel` alongside the PDF and essay; OceanNotes
+is being deprecated as a separate repo.
 
-- [ ] **Define the "technical note + companion essay" pattern** (do this
-      first — TODO 1 is the first instance). Decide:
-      - Category name for these companion essays (e.g., `technical-notes`),
-        applied alongside the topical thread tag.
-      - Where the PDF lives in the repo (proposed:
-        `posts/<thread>/<slug>/<filename>.pdf` so the site serves a direct
-        download in addition to the Zenodo copy).
-      - Front-matter conventions: DOI field, "download PDF" button/link,
-        abstract excerpt or pull quote, hero image strategy.
-      - Whether to add a `technical-notes.qmd` landing page (deferred
-        until 3+ notes exist, per the thread thresholds in `CLAUDE.md`).
-      - Update `CONVENTIONS.md` and `CLAUDE.md` so future migrations
-        follow the pattern without re-deciding.
+- [x] **Define the "technical note + companion essay" pattern** (do this
+      first — TODO 1 is the first instance). Settled proposal below;
+      AI-disclosure wording deferred to first migration.
+
+      **Two-artifact model.** The PDF (rendered from `.tex` co-located
+      in the post folder) is the primary scholarly artifact and carries
+      the DOI. The companion essay (`index.qmd`) is a short framing
+      piece. LinkedIn readers find the essay; researchers find the PDF
+      via DOI in Scholar.
+
+      **Folder + filenames.**
+      - `posts/<thread>/<slug>/index.qmd` — companion essay
+      - `posts/<thread>/<slug>/<slug>.tex` — LaTeX source (renamed from
+        the original to match the slug; e.g.
+        `techreport_timeseries_from_psd.tex` → `spectra-from-psd.tex`)
+      - `posts/<thread>/<slug>/<slug>.pdf` — the deposited technical
+        note (slug-based filename matches `where-are-the-humans`
+        convention)
+      - `posts/<thread>/<slug>/hero.<ext>` — usually a key figure
+        lifted from the PDF
+      - Per-note figures, `.bib` excerpts, etc. live alongside.
+
+      **Shared LaTeX resources.** OceanNotes carries shared
+      `.cls`/`.sty`/`.bst`/`.bib` files (`npsreport2018.cls`,
+      `math_bbing.sty`, `my_acronyms.sty`, `nps_sf298.sty`,
+      `npsthesis.bst`, `bbing_master.bib`, `ocean_notes.bib`). The
+      needed subset is copied into each post folder — self-contained
+      folders match the "one folder per post" spirit elsewhere in the
+      repo, and the duplication is small.
+
+      **Categories.** Two tags:
+      - `technical-note` — meta tag for companion-to-PDF essays
+        (singular, per CONVENTIONS.md "avoid plurals" lean).
+      - Topical thread tag — `spectra`, `sonar`, `usv-control`, etc.
+
+      **Front-matter template.**
+
+      ```yaml
+      title: <human-friendly title; not necessarily the PDF title>
+      description: <one-sentence summary aimed at LinkedIn readers>
+      author: Brian Bingham
+      date: <publication date on this site>
+      categories: [technical-note, <thread-tag>]
+      image: hero.<ext>
+      doi: 10.5281/zenodo.NNNNNNNN
+      citation: true
+      resources:
+        - <slug>.pdf
+      ```
+
+      The `date` field is the carrel publication date, not the original
+      `.tex` date — the original date goes in the body as provenance.
+
+      **Body structure** (~300–700 words):
+      1. Pull quote / abstract excerpt as callout.
+      2. What it is.
+      3. Why release it now (typical motives: useful to colleagues,
+         pedagogical value, no peer-review pipeline planned).
+      4. Who it's for.
+      5. Original date / provenance — when the `.tex` was written;
+         the Zenodo deposit dates the *release*, not the science.
+      6. Download block: `[Download PDF](<slug>.pdf) · DOI: …`
+
+      **No format-conditional blocks.** The `.qmd` is HTML-only — we
+      do not render it to PDF. (Main divergence from
+      `where-are-the-humans`, which renders the same `.qmd` to both.)
+
+      **AI disclosure.** Standard web callout for the essay, with one
+      added sentence noting that the technical note itself predates AI
+      assistance and only the companion essay was drafted with Claude
+      Code. *Exact wording deferred until first migration.*
+
+      **Zenodo deposit.** Modeled on `AUTHOR_WORKFLOW.md` Stage 5, with
+      the `.tex` pipeline replacing the `.qmd → PDF` render:
+
+      1. Render `<slug>.tex` to PDF locally
+         (`pdflatex` / `latexmk -pdf`); proofread.
+      2. Upload to Zenodo, fill metadata (resource type:
+         *Publication → Technical note* — not *Preprint*),
+         **Reserve DOI**.
+      3. Inject the reserved DOI into `<slug>.tex` (one-line footer
+         on the title page; exact macro TBD), re-render.
+      4. Wire DOI into `index.qmd` front matter, commit, push, deploy.
+      5. Replace the deposited PDF with the DOI-stamped one, publish
+         on Zenodo.
+      6. Verify resolution + live page + PDF HTTP 200.
+
+      **Companion-essay drafting.** Short enough to collapse the
+      `AUTHOR_WORKFLOW.md` four-stage process — single annotated-outline
+      pass, then draft, then PMR. Skip the formal Stage 1 outline.
+
+      **Landing page.** Deferred until 3+ technical notes exist (per
+      CLAUDE.md threshold). Then `technical-notes.qmd`.
+
+      **OceanNotes deprecation.** Each migrated note is removed from
+      OceanNotes (or marked as moved). Once all migration TODOs below
+      are done, archive the OceanNotes repo with a README pointer to
+      carrel and a final tag.
+
+      **Doc updates once settled.**
+      - `CONVENTIONS.md` — add "Technical-note + companion-essay"
+        section
+      - `CLAUDE.md` — one paragraph pointer to the new section
+      - `AUTHOR_WORKFLOW.md` — note Stage 5 deltas (or add Stage 5b)
 
 - [ ] **Release spectra & stochastic-simulation notes.** Start with
       `techreport_timeseries_from_psd.tex` — most release-ready (formal

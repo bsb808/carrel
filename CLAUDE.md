@@ -41,6 +41,12 @@ find the same content via DOI in Scholar.
 - Article development: substantive articles are developed in stages per
   `AUTHOR_WORKFLOW.md` — outline → annotated outline → draft → final —
   with a PMR review between stages.
+- Technical notes (LaTeX originals migrated from `OceanNotes`) follow a
+  two-artifact pattern: the PDF is the primary scholarly artifact and a
+  short companion `index.qmd` essay frames it for the web. Co-located
+  in `posts/<thread>/<slug>/` along with the `.tex` source. See
+  `CONVENTIONS.md` § Technical-note + companion-essay; deposit
+  procedure is `AUTHOR_WORKFLOW.md` Stage 5b.
 
 ## Thread structure thresholds
 
