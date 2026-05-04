@@ -31,6 +31,14 @@ Running list of deferred work. Strike items as they're completed.
 - [ ] **Connect repo to Zenodo.** zenodo.org → sign in with GitHub →
       Settings → GitHub → toggle `bsb808/carrel` on.
 
+- [ ] **First-article archival pass.** Once Zenodo is connected:
+      (1) full editorial review of the site — landing page, about,
+      and the `where-are-the-humans` article end-to-end; fix any
+      issues; (2) tag a GitHub release; (3) Zenodo auto-deposits
+      and mints a DOI from `CITATION.cff`; (4) add `doi:` and
+      `citation: true` to the article front-matter (per
+      `CLAUDE.md`), commit, push.
+
 - [ ] **LinkedIn preview card check.** Draft (don't post) a
       LinkedIn share of the live URL; confirm the OG card shows
       the title, description, and Moore School photo.
