@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: |
+  Individual articles on this site may have their own DOIs via Zenodo;
+  the canonical citation for an article is on its page. To cite the
+  site itself, use the metadata below.
+title: "Carrel: Notebook of essays and technical notes"
+authors:
+  - family-names: Bingham
+    given-names: Brian
+    orcid: "https://orcid.org/0009-0007-8261-3108"
+url: "https://carrel.bbingham.dev"
+repository-code: "https://github.com/bsb808/carrel"
+type: software
+license:
+  - MIT
+  - CC-BY-4.0
