@@ -3,6 +3,10 @@ project:
   output-dir: _site
   resources:
     - CNAME
+  render:
+    - index.qmd
+    - about.qmd
+    - posts/
 
 website:
   title: "Brian Bingham · Carrel"
