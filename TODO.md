@@ -192,5 +192,24 @@ is being deprecated as a separate repo.
       No companion essay, no Zenodo deposit. Original kept in
       `OceanNotes/` until release proper.
 
-- [ ] **Release CUSV modeling notes** (`cusv_model.tex`). Same pattern.
-      Anchors the `usv-control` thread named in `PLAN.md`.
+- [ ] **Release CUSV modeling notes** (`cusv_model.tex`). Anchors
+      the `usv-control` thread named in `PLAN.md`. *Drafted 2026-05-04
+      in `posts/usv-control/cusv-model/`.* `.tex` migrated with
+      tidied preamble, flat figure paths, self-contained bib
+      (`bbing_master.bib` from `SeaStateToDesign/latexlib`, plus
+      `ocean_notes.bib`); kept `article` class because the 6×6
+      matrix equations don't fit IEEEtran columns. PDF renders to
+      16 pages. Companion essay drafted (`index.qmd`); PMR pass on
+      `.tex` complete (typos, $C_F$ vs $C_w$ notation correction,
+      $Y_{v|v|}$/$Z_{w|w|}$ corrections, top-bottom symmetry
+      flagged as deliberate idealization, leanis_analysis URL
+      stripped). Parameter-estimation source mirrored from
+      `OceanNotes/src/usv_param_est/` into `code/` and listed in a
+      new "Source code" section before the bibliography. Remaining
+      to resume: (1) PMR pass on `index.qmd` companion essay;
+      (2) Zenodo deposit (Stage 5b steps 2–6) — Resource type
+      *Publication → Technical note*; (3) wire reserved DOI into
+      the `\thanks{}` footnote on the title page of
+      `cusv-model.tex` and into `index.qmd` front matter; (4)
+      replace the deposited PDF with the DOI-stamped one and
+      publish; (5) push and verify live.
