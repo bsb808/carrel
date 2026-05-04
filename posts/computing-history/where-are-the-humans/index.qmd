@@ -6,7 +6,7 @@ date: "2026-05-03"
 categories: [computing-history]
 toc: false
 draft: true
-# image: hero.jpg  # TODO: Moore School differential-analyser photo (Wikimedia)
+image: hero.jpg
 ---
 
 ::: {.callout-note appearance="simple" icon=false}
@@ -14,6 +14,11 @@ I write these with Claude Code. I lead, it drafts and revises on my
 instruction, and I review the final carefully before posting. Mistakes
 are mine.
 :::
+
+![Kay McNulty, Alyse Snyder, and Sis Stump operate the differential
+analyser at the Moore School of Electrical Engineering, University of
+Pennsylvania, c. 1942–45. US Army photograph; public domain via
+[Wikimedia Commons](https://commons.wikimedia.org/wiki/File:KayMcNultyAlyseSnyderSisStumpDifferentialAnalyzer.jpg).](hero.jpg)
 
 *"Machines will be capable, within twenty years, of doing any work a
 man can do."*[^simon]
