@@ -53,8 +53,8 @@ Methods for simulation of stochastic process include covariance decomposition, a
 
 
 \subsection{Background}
-Foundational work on spectral representation of a stochastic process was done by 
- Rice \cite{rice44mathematical1,rice45mathematical2}.  Some of the original approaches to generating a time series with given \ac{psd} were based the design of a linear filter for which white noise input would generate an output with the desired \ac{psd}.  Introduced sum of cosines \cite{borgman69ocean, shinozuka72monte}.  The methods covered in this report include the following:
+Foundational work on spectral representation of a stochastic process was done by
+ Rice \cite{rice44mathematical1,rice45mathematical2}.  Some of the original approaches to generating a time series with given \ac{psd} were based on the design of a linear filter for which white noise input would generate an output with the desired \ac{psd}.  Sum-of-cosines methods were introduced in \cite{borgman69ocean, shinozuka72monte}.  The methods covered in this report include the following:
 \begin{itemize}
 \item Linear filtering and spectral factorization.
 \item Spectral representation - sum of cosines
@@ -95,7 +95,7 @@ When using the oscillation frequency in Hertz, the continuous time Fourier and i
   X(f) & = & \int_{-\infty}^{\infty}x(t)e^{-j (2 \pi f) t}dt & = & \mathcal{F}\{x(t)\} \\
   x(t) & = & \int_{-\infty}^{\infty}X(f)e^{j (2 \pi f) t}df & = & \mathcal{F}^{-1}\{X(f)\}
 \end{IEEEeqnarray}
-where we use the notation $\mathcal{F}{\cdot}$ for the Fourier transform operator and $\mathcal{F}^{-1}{\cdot}$ for the inverse Fourier transform operator.
+where we use the notation $\mathcal{F}\{\cdot\}$ for the Fourier transform operator and $\mathcal{F}^{-1}\{\cdot\}$ for the inverse Fourier transform operator.
 
 \subsubsection{Angular Frequency: $\unit[\omega]{[rad/s]}$}
 However, expressing the transforms in terms of angular frequency, $\omega = 2 \pi f$, destroys this symmetry\footnote{\url{http://mathworld.wolfram.com/FourierTransform.html}}.  To make matters worse, there are a variety of conventions when it comes to writing the definition of the transform with angular frequency, hence the ``plethora of rival conventions of the definition of the Fourier transform''\footnote{\url{https://en.wikipedia.org/wiki/Fourier_transform\#Units_and_duality}}. If we use integration by substitution (\ref{e:ibs}) and the definition (\ref{e:fo}) results in 
@@ -119,7 +119,7 @@ which is similar to the Fourier-Stieltjes transform used commonly in probability
 The theorem states that,  ``the autocorrelation function of a wide-sense-stationary random process has a spectral decomposition given by the power spectrum of that process''\footnote{\url{https://en.wikipedia.org/wiki/Wiener-Khinchin_theorem}}.
 
 
-Consider a zero-mean, real-valued, wide-sense stationary\footnote{Wide-sense stationarity is a weaker form of strict sense stationarity.  For a wide-sense stationary stochastic process the mean and the autocorrelation are time invariant - and the energy is finite.} $x(t)$.  The autocorrelation is defined as
+Consider a zero-mean, real-valued, wide-sense stationary\footnote{Wide-sense stationarity is a weaker form of strict sense stationarity.  For a wide-sense stationary stochastic process the mean and the autocorrelation are time invariant, and the average power is finite.} $x(t)$.  The autocorrelation is defined as
 \[
 R_{xx}(\tau) = E[x(t+\tau)x(t)] 
 \]
@@ -159,13 +159,15 @@ Expressing the \ac{psd} in angular frequency ($\unit[\omega]{[rad/s]}$) can be e
 \end{IEEEeqnarray}
 Equations (\ref{e:psdw}) are applicable when provided with a \ac{psd} function expressed in oscillation frequency, but carrying out the integration in angular frequency.  If the \ac{psd} is expressed in angular frequency, the intention may be that
 \begin{equation}
-  G_{xx}(\omega) = \frac{1}{2 \pi} S_{xx}(f = \omega/(2 \pi)
+  G_{xx}(\omega) = \frac{1}{2 \pi} S_{xx}(f = \omega/(2 \pi))
 \end{equation}
 where $G_{xx}(\omega)$ is the two-sided \ac{psd} in angular frequency and the corresponding one-sided \ac{psd} in angular frequency is
-\begin{equation}
-  \Gamma_{xx}(\omega) = 2 G_{xx}(\omega) = \frac{1}{\pi} S_{xx}(f=\omega/(2\pi) = \frac{1}{2 pi} \Sigma_{xx}(f=\omega/(2\pi), \; \forall \omega \geq 0,
-  \label{e:onetwow}
-\end{equation}
+\begin{IEEEeqnarray}{rCl}
+  \IEEEyesnumber\label{e:onetwow}
+  \Gamma_{xx}(\omega) & = & 2 G_{xx}(\omega) \nonumber \\
+  & = & \frac{1}{\pi} S_{xx}(f=\omega/(2\pi)) \nonumber \\
+  & = & \frac{1}{2 \pi} \Sigma_{xx}(f=\omega/(2\pi)), \; \forall \omega \geq 0,
+\end{IEEEeqnarray}
 which implies that
 \begin{IEEEeqnarray}{rClCl}
   \IEEEyesnumber\label{e:psdw2} \IEEEyessubnumber*
@@ -214,7 +216,7 @@ is necessary and must be forced if $G_{yy}(0)\neq 0$.  The simulated time series
 \subsubsection{Periodicity, Simulation Error and Convergence}
 
 By examining the error between the time series ensemble autocorrelation and the
-desired autocorrelation is proportional we can quantify the quality of the time series reproduction of the target \ac{psd}. In \cite{shinozuka91simulation} the authors show, using \cite{conte17elementary},  that for the simulation equations (\ref{e:sumcosines}) and (\ref{e:sim}) the rate of convergence proportional to $1/N$.It is worth noting that the frequency sampling (\ref{e:lrs}) of the summation in (\ref{e:sumcosines}) is analogous to integral approximation by a left Riemann sum, which is consistent with an error function that decreases with $1/N$.
+desired autocorrelation, we can quantify the quality of the time series reproduction of the target \ac{psd}. In \cite{shinozuka91simulation} the authors show, using \cite{conte17elementary}, that for the simulation equations (\ref{e:sumcosines}) and (\ref{e:sim}) the rate of convergence is proportional to $1/N$. It is worth noting that the frequency sampling (\ref{e:lrs}) of the summation in (\ref{e:sumcosines}) is analogous to integral approximation by a left Riemann sum, which is consistent with an error function that decreases with $1/N$.
 
 An alternative approach is to use frequency sampling analogous to a middle Riemann sum method by sampling of the spectrum according to 
 \begin{equation}
@@ -279,7 +281,7 @@ is imposed.  Also, to be consistent with (\ref{e:an0}), the condition
 \end{equation}
 is imposed.
 
-The generated time series $y^{(i)}(p \Delta t)$ is periodic with $T_0 = 2 \pi/\Delta\omega$ as demonstrated in the summation of cosines (\ref{e:to}).  Time and frequency sampling are related by
+The generated time series $y^{(i)}(p \Delta t)$ is periodic with $T_0 = 2 \pi/\Delta\omega$ as demonstrated in the summation of cosines (\ref{e:T0}).  Time and frequency sampling are related by
 \begin{IEEEeqnarray}{rClCl}
   \IEEEyesnumber\label{e:tw} \IEEEyessubnumber
   T_0 & = & \frac{2 \pi}{ \Delta \omega} & = &M \Delta t \label{e:tw1}\\
@@ -302,7 +304,7 @@ The numerical convergence ($1/N$, $1/N^2$, or $1/N^4$) affects both the computat
 
 \subsection{Equivalent Sampling}
 
-For the purposes of making direct, fair comparisons between methods we would like to generate the same sample functions by each method.  The summation of cosines method, as expressed in (\ref{e:sumcosines}) and (\ref{e:sim}) uses $N$ samples divided equally between zero and the upper limit of $\omega_u$.  The temporal sampling is independent, with $P$ time samples based on the choice of $\Delta t$.  For the FFT method (\ref{e:scfft}) the frequency sample size ($\Delta \omega$) is kept the same, but $M$ samples are used with $M\geq 2 \, N$ in order to prevent aliasing, hence the condition for padding zeros in the FFT series (\ref{e:bn0}).  Unlike the summation of cosines method, the FFT method results an equivalent number of time and frequency samples.  This is summarized in Table~\ref{t:compare}
+For the purposes of making direct, fair comparisons between methods we would like to generate the same sample functions by each method.  The summation of cosines method, as expressed in (\ref{e:sumcosines}) and (\ref{e:sim}) uses $N$ samples divided equally between zero and the upper limit of $\omega_u$.  The temporal sampling is independent, with $P$ time samples based on the choice of $\Delta t$.  For the FFT method (\ref{e:scfft}) the frequency sample size ($\Delta \omega$) is kept the same, but $M$ samples are used with $M\geq 2 \, N$ in order to prevent aliasing, hence the condition for padding zeros in the FFT series (\ref{e:bn0}).  Unlike the summation of cosines method, the FFT method results in an equivalent number of time and frequency samples.  This is summarized in Table~\ref{t:compare}.
 
 
 \begin{table*}[!ht]
@@ -316,7 +318,7 @@ For the purposes of making direct, fair comparisons between methods we would lik
 \hline\hline
 Number of Frequency Sample & $N$ & $M$ \\ \hline
 Frequency Sample Size  &  $\Delta \omega = \frac{\omega_{u}}{N}$ & $\Delta \omega = \frac{\omega_{u}}{N}$ \\ \hline
-  Frequency Upper Limit & $ \omega_u$ & $ M \, \Delta\omega \geq2 \omega_u$ \\ \hline
+  Frequency Upper Limit & $ \omega_u$ & $ M \, \Delta\omega \geq 2 \omega_u$ \\ \hline
   Number of Time Samples & $P=\frac{T_0}{\Delta t}$ & $M$ \\ \hline
   Time Upper Limit & $T_0$ & $T_0$ \\
 \hline
@@ -325,7 +327,7 @@ Frequency Sample Size  &  $\Delta \omega = \frac{\omega_{u}}{N}$ & $\Delta \omeg
 
 We can adjust the summations of cosines method to achieve the same frequency and time sampling for both methods.  By setting frequency upper limit to  $2\omega_u$ we can set $N=M$ without causing aliasing in the FFT method.  To achieve equivalent temporal sampling we need to set $P=M$ or equivalently choose
 \begin{equation}
-  \Delta t = \frac{T0}{M}
+  \Delta t = \frac{T_0}{M}
   \label{e:newdeltat}
 \end{equation}
 which satisfies the constraint (\ref{e:deltat}).  Combining (\ref{e:deltat}), (\ref{e:tw1}) and (\ref{e:newdeltat}) yields
@@ -347,15 +349,15 @@ where constants are chosen as $\sigma=1$ and $b=\unit[1]{s}$. The cutoff frequen
   \caption{Two-sided \ac{psd} from (\ref{e:expsd}).}
   \label{f:psd}
 \end{figure*}
-We choose the maximum frequency for all methods to be $\omega_{max}=2\omega_u$ and choose $N=M=2^{12}$ which results in a $T_0 = \unit[1024]{s}$ and $\Delta t = \unit[0.25]{rad/s}$.  We generate a series of $M$ random phase values, $\phi^{(i)}_n$ for use in all methods.
+We choose the maximum frequency for all methods to be $\omega_{max}=2\omega_u$ and choose $N=M=2^{12}$ which results in a $T_0 = \unit[1024]{s}$ and $\Delta t = \unit[0.25]{s}$.  We generate a series of $M$ random phase values, $\phi^{(i)}_n$ for use in all methods.
 
-When implementing the DTFS method (\ref{e:scfft}) with an FFT algorithm, it is important to be explicitly in the FFT implementation description because there can be differences in the conventions used when expressing (\ref{e:dft}).  The MATLAB \texttt{fft()} implementation corresponds to the convention in (\ref{e:fft}) terms of scaling and the sign of the imaginary exponential\footnote{\url{https://www.mathworks.com/help/signal/ug/discrete-fourier-transform.html}}.  To make use of the FFT convention, we express the series $B_n$ with negative imaginary values
+When implementing the DTFS method (\ref{e:scfft}) with an FFT algorithm, it is important to be explicit about which FFT convention is being used, because conventions for expressing (\ref{e:dft}) vary across implementations.  The MATLAB \texttt{fft()} implementation corresponds to the convention in (\ref{e:fft}) terms of scaling and the sign of the imaginary exponential\footnote{\url{https://www.mathworks.com/help/signal/ug/discrete-fourier-transform.html}}.  To make use of the FFT convention, we express the series $B_n$ with negative imaginary values
 \begin{equation}
   \beta_n = \sqrt{2} A_n e^{-j\phi^{(i)}_n}, \; n=0,1,...,M-1
 \end{equation}
 which allows us to use MATLAB's FFT of the $\beta_n$ series.
 
-We implement both the sum of cosines and FFT methods for generating the sample function with the same time/frequency samples sizes of $N=M$ and the same set of $M$ random phase values.  The resulting time series, on of infinitely many sample functions, is show in Figure~\ref{f:timeseries}. 
+We implement both the sum of cosines and FFT methods for generating the sample function with the same time/frequency samples sizes of $N=M$ and the same set of $M$ random phase values.  The resulting time series, one of infinitely many sample functions, is shown in Figure~\ref{f:timeseries}.
 \begin{figure*}[hbt!]
   \centering
   \includegraphics[width=\FigWidth\textwidth]{images/timeseries.png}
@@ -371,13 +373,13 @@ To verify that the generated sample functions are consistent with the original t
   \caption{Estimates of the one-sided PSDs for the two time series from Figure~\ref{f:timeseries} shown alongside the original PSD from Figure~\ref{f:psd}. }
   \label{f:psdest}
 \end{figure*}
-The figure illustrates that both time series have equivalent estimated PSDs and that they approximate the target PSD.  The FFT method ran $\approx 60$ times faster than the summation of cosines method: \unit[0.14]{s} vs. \unit[0.0024]{s}.  Repeating the tests various values for $M$ suggests that the speed-up ratio for the FFT method is $T_{soc}/T_{fft} = 0.04 \, M$ where $T_{soc}/T_{fft}$ is the ratio of computation time for the summation of cosines method vs. the FFT method.
+The figure illustrates that both time series have equivalent estimated PSDs and that they approximate the target PSD.  The FFT method ran $\approx 60$ times faster than the summation of cosines method: \unit[0.14]{s} (summation of cosines) vs. \unit[0.0024]{s} (FFT).  Repeating the tests for various values of $M$ suggests that the speed-up ratio for the FFT method is $T_{soc}/T_{fft} = 0.04 \, M$ where $T_{soc}/T_{fft}$ is the ratio of computation time for the summation of cosines method vs. the FFT method.
 
-The source code for this example is here: \url{https://github.com/bsb808/OceanNotes/tree/master/src/gen_timeseries_from_psd}.
+The MATLAB source code for this example is co-located with this report at \url{https://github.com/bsb808/carrel/tree/main/posts/wave-spectra-sim/spectra-from-psd/src}.
 
 
 \section{Conclusion}
-This report documents the implementation details necessary to generate time series samples of physical processes described via an empirical \ac{psd}. It is import to maintain consistency with the scaling and conventions employed in order to generate synthetic samples statistically representative of the target phenomena.  These details are put into practice in a MATLAB reference implementation to illustrate both summation of cosines and FFT methods for generating equivalent time series and to show that the simulated time series are statistically representative of the underlying \ac{psd}.
+This report documents the implementation details necessary to generate time series samples of physical processes described via an empirical \ac{psd}. It is important to maintain consistency with the scaling and conventions employed in order to generate synthetic samples statistically representative of the target phenomena.  These details are put into practice in a MATLAB reference implementation to illustrate both summation of cosines and FFT methods for generating equivalent time series and to show that the simulated time series are statistically representative of the underlying \ac{psd}.
 
 
 \bibliographystyle{IEEEtran}
