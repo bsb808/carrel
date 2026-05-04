@@ -1,0 +1,39 @@
+project:
+  type: website
+  output-dir: _site
+
+website:
+  title: "Brian Bingham · Carrel"
+  description: "Short essays on engineering, computation"
+  site-url: https://carrel.bbingham.dev
+  repo-url: https://github.com/bsb808/carrel
+  open-graph: true
+  navbar:
+    pinned: true
+    left:
+      - href: index.qmd
+        text: Home
+      - href: about.qmd
+        text: About
+    right:
+      - icon: rss
+        href: index.xml
+        aria-label: RSS feed
+      - icon: github
+        href: https://github.com/bsb808/carrel
+        aria-label: Source on GitHub
+  page-footer:
+    left: "© 2026 Brian Bingham · [Source on GitHub](https://github.com/bsb808/carrel)"
+    right: "Built with [Quarto](https://quarto.org/)"
+
+format:
+  html:
+    theme: litera
+    toc: true
+    code-copy: true
+    smooth-scroll: true
+
+author:
+  - name: Brian Bingham
+    url: https://carrel.bbingham.dev
+    orcid: 0009-0007-8261-3108

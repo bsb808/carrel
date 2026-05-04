@@ -4,6 +4,7 @@ description: "Persistent roles in computing"
 author: "Brian Bingham"
 date: "2026-05-03"
 categories: [computing-history]
+toc: false
 draft: true
 # image: hero.jpg  # TODO: Moore School differential-analyser photo (Wikimedia)
 ---
