@@ -2,3 +2,13 @@
 /_site/
 /_freeze/
 **/*.quarto_ipynb
+
+# LaTeX auxiliary files (technical-note posts)
+**/*.aux
+**/*.bbl
+**/*.blg
+**/*.fdb_latexmk
+**/*.fls
+**/*.log
+**/*.out
+**/*.synctex.gz
