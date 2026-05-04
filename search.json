@@ -14,11 +14,18 @@
     "text": "Footnotes\n\n\nHerbert A. Simon, The Shape of Automation for Men and Management (Harper & Row, 1965); the line first appeared in his 1960 book The New Science of Management Decision.↩︎\nDavid A. Mindell, Our Robots, Ourselves: Robotics and the Myths of Autonomy (Viking, 2015). Mindell was one of my PhD advisors.↩︎\nThe Clay Mathematics Institute’s Millennium Prize Problems include the existence and smoothness of solutions to the Navier–Stokes equations of fluid flow, with a $1 million prize for a proof. As of 2026 it remains unclaimed.↩︎\nCharles Babbage, Passages from the Life of a Philosopher (1864), recounting an 1821 incident with John Herschel that prompted the Difference Engine.↩︎\nAs recounted by John Backus; see, e.g., his reflections in The New Stack.↩︎"
   },
   {
+    "objectID": "posts/usv-control/cusv-model/index.html",
+    "href": "posts/usv-control/cusv-model/index.html",
+    "title": "A unified six-DoF model for the CUSV",
+    "section": "",
+    "text": "I write these with Claude Code. I lead, it drafts and revises on my instruction, and I review the final carefully before posting. Mistakes are mine. The technical note itself (the PDF) predates this workflow and was drafted entirely without AI assistance; only this companion essay was written with Claude Code.\n\n\n\nDownload PDF\n\n\n\nWave-slope spectra alongside the vessel pitch and roll responses expressed as transfer functions — Figure 10 of the technical note. The unified model lets a simulator drive seakeeping responses directly from a chosen sea state.\n\n\n\n“For the purposes of supporting the development of autonomy, it is important that the unified simulation model include both manoeuvring and seakeeping degrees-of-freedom. The manoeuvring aspects of the model influence the vessel steering and control portion of the autonomy solution. The inclusion of the seakeeping aspect of the model is critical for exercising the sensory perception portion of the autonomy solution.”\n\nThe note collects a self-consistent set of parameters for a six-degree-of-freedom marine-craft model adapted from Fossen’s Handbook of Marine Craft Hydrodynamics and Motion Control and implemented as a Gazebo physics-engine plugin. The vessel of record is the Common Unmanned Surface Vessel (CUSV), a 12-metre, 33-tonne catamaran serving as a representative platform.\nSurface-vessel models are traditionally split in two: manoeuvring models cover surge, sway and yaw; seakeeping models cover heave, roll and pitch. For autonomy work that split is awkward. A controller that only sees manoeuvring degrees of freedom cannot exercise the perception stack against the same waves that move the boat. The note documents a single parameter set that does both.\nThe hydrodynamic derivatives come from where the literature has the strongest theoretical or empirical support: Sarda et al. for the manoeuvring-plane added masses, Greenhow & Lin for the partially-submerged-cylinder seakeeping terms, Holtrop’s method and ITTC-1957 for drag, with the seakeeping coefficients then sanity-checked against step-response tests of the time-domain implementation (logarithmic-decrement identification of a second-order transfer function in heave, pitch and roll). The resulting frequency-domain model lets the simulator drive vessel motion directly from a chosen wave-height spectrum — see the wave-slope-vs-pitch/roll figure above.\nI am releasing this for two reasons. The first is utility: this parameterisation underpinned the CUSV branch of the WAM-V Gazebo plugin used in Virtual RobotX (VRX), and it is the kind of artefact other robotics groups end up reconstructing from Fossen’s text and half a dozen papers. Having a worked example that names the chosen references and shows the resulting numbers is useful when you are trying to do the same job for a different hull. The second reason is pedagogical: the note is a compact tour of the steps a graduate student needs to take to go from “we want to simulate a boat” to “we have hydrodynamic derivatives the physics engine can integrate”. It is not a complete textbook; it is a worked example with citations back to the literature for the parts that are.\nThe audience, then, is engineers and graduate students building or calibrating surface-vessel simulators — particularly those using Gazebo or Ignition, or any environment where the model has to be parameterised explicitly rather than absorbed from a vendor’s CAD package.\nThe technical content is unchanged from the original draft of 1 October 2020. The release version cleans up the LaTeX preamble, self-contains the bibliography, and adds a provenance footnote. The Zenodo deposit (DOI to follow) dates the release, not the science.\n\n\n\nCitationBibTeX citation:@online{bingham2026,\n  author = {Bingham, Brian and Bingham, Brian},\n  title = {A Unified {six-DoF} Model for the {CUSV}},\n  date = {2026-05-03},\n  url = {https://carrel.bbingham.dev/posts/usv-control/cusv-model/},\n  langid = {en}\n}\nFor attribution, please cite this work as:\nBingham, Brian, and Brian Bingham. 2026. “A Unified Six-DoF Model\nfor the CUSV.” May 3. https://carrel.bbingham.dev/posts/usv-control/cusv-model/."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Brian Bingham · Carrel",
     "section": "",
-    "text": "Short essays on engineering and computation, written for academic colleagues. Working thoughts shared earlier than a paper would allow; substantive pieces archived to Zenodo for the long record.\n\n\n\n\n\n\n\n\n\nWhere Are the Humans?\n\n\n\ncomputing-history\n\n\n\nPersistent roles in computing\n\n\n\n\n\nMay 3, 2026\n\n5 min\n\n\n\n\nNo matching items"
+    "text": "Short essays on engineering and computation, written for academic colleagues. Working thoughts shared earlier than a paper would allow; substantive pieces archived to Zenodo for the long record.\n\n\n\n\n\n\n\n\n\nA unified six-DoF model for the CUSV\n\n\n\ntechnical-note\n\nusv-control\n\n\n\nA 2020 working note that parameterises a Fossen-style marine-craft model for a representative unmanned surface vessel — combining manoeuvring and seakeeping in one Gazebo plugin.\n\n\n\n\n\nMay 3, 2026\n\n3 min\n\n\n\n\n\n\nTime Series From a PSD: Scaling, Units, Sidedness\n\n\n\ntechnical-note\n\nwave-spectra-sim\n\n\n\nHow to generate a time series from a power spectral density without getting the conventions wrong.\n\n\n\n\n\nMay 3, 2026\n\n2 min\n\n\n\n\n\n\nWhere Are the Humans?\n\n\n\ncomputing-history\n\n\n\nPersistent roles in computing\n\n\n\n\n\nMay 3, 2026\n\n5 min\n\n\n\n\nNo matching items"
   },
   {
     "objectID": "about.html",
@@ -26,5 +33,40 @@
     "title": "About",
     "section": "",
     "text": "I’m Brian Bingham, a professor of Mechanical and Aerospace Engineering at the Naval Postgraduate School in Monterey, California, and a co-founder of Honu Robotics. My research is on marine robotics — autonomous surface and underwater vehicles, the simulation environments they’re tested in, and the controls and navigation that hold them together. I did my PhD at MIT (mechanical engineering, 2003).\nThis site is a place for short essays and technical notes — working thoughts shared with colleagues earlier than a paper would allow, revised over time as my thinking does. Substantive pieces are archived to Zenodo for DOIs and Google Scholar indexing. The audience is engineering academics, educators, and the occasional curious student."
+  },
+  {
+    "objectID": "posts/wave-spectra-sim/spectra-from-psd/index.html",
+    "href": "posts/wave-spectra-sim/spectra-from-psd/index.html",
+    "title": "Time Series From a PSD: Scaling, Units, Sidedness",
+    "section": "",
+    "text": "I write these with Claude Code. I lead, it drafts and revises on my instruction, and I review the final carefully before posting. Mistakes are mine. The technical note itself predates AI assistance; only this companion essay was drafted with Claude."
+  },
+  {
+    "objectID": "posts/wave-spectra-sim/spectra-from-psd/index.html#what-it-is",
+    "href": "posts/wave-spectra-sim/spectra-from-psd/index.html#what-it-is",
+    "title": "Time Series From a PSD: Scaling, Units, Sidedness",
+    "section": "What it is",
+    "text": "What it is\nA short technical note on generating a sample time series from a power spectral density. It walks through the Fourier-transform preliminaries, then derives two simulation methods — summation of cosines and an FFT-based variant — with explicit accounting for the choices that quietly bite practitioners: angular vs. ordinary frequency, one-sided vs. two-sided PSD, and the scaling factors that attach to each combination. A worked example puts both methods on the same footing and shows that the FFT variant runs about sixty times faster on the test problem; a MATLAB reference implementation is linked from the report."
+  },
+  {
+    "objectID": "posts/wave-spectra-sim/spectra-from-psd/index.html#why-release-it-now",
+    "href": "posts/wave-spectra-sim/spectra-from-psd/index.html#why-release-it-now",
+    "title": "Time Series From a PSD: Scaling, Units, Sidedness",
+    "section": "Why release it now",
+    "text": "Why release it now\nThe note was written in 2023 as background for the maritime simulation tools we use for autonomous surface and underwater vehicles. It isn’t a research contribution — it’s a synthesis — so there was never a peer-review pipeline for it. But the same conventions confusion comes up every time a graduate student or a colleague needs to drive a simulator from an empirical spectrum, and there’s no single short reference I can hand over. Putting it on Zenodo with a DOI gives it a citable, indexable home; this companion essay puts it in front of readers who wouldn’t otherwise find a .pdf on a project drive."
+  },
+  {
+    "objectID": "posts/wave-spectra-sim/spectra-from-psd/index.html#who-its-for",
+    "href": "posts/wave-spectra-sim/spectra-from-psd/index.html#who-its-for",
+    "title": "Time Series From a PSD: Scaling, Units, Sidedness",
+    "section": "Who it’s for",
+    "text": "Who it’s for\nEngineers who need physically meaningful stochastic inputs to a simulation — wave fields, wind, vehicle disturbances, sensor noise — from a spectral specification. Especially useful the first time you realize the empirical spectrum you’ve been handed is one-sided, your implementation is two-sided, and the variance you get back is off by a factor of two."
+  },
+  {
+    "objectID": "posts/wave-spectra-sim/spectra-from-psd/index.html#provenance",
+    "href": "posts/wave-spectra-sim/spectra-from-psd/index.html#provenance",
+    "title": "Time Series From a PSD: Scaling, Units, Sidedness",
+    "section": "Provenance",
+    "text": "Provenance\nOriginally released as Naval Postgraduate School technical report NPS-MAE-23-002, dated 1 April 2023. The present PDF has been reformatted in the IEEEtran journal style for compactness; the technical content is unchanged from the original. The MATLAB reference implementation is in bsb808/OceanNotes on GitHub.\nDownload PDF"
   }
 ]

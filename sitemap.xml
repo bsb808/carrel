@@ -2,14 +2,22 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://carrel.bbingham.dev/posts/computing-history/where-are-the-humans/index.html</loc>
-    <lastmod>2026-05-04T04:11:22.758Z</lastmod>
+    <lastmod>2026-05-04T21:45:53.567Z</lastmod>
+  </url>
+  <url>
+    <loc>https://carrel.bbingham.dev/posts/usv-control/cusv-model/index.html</loc>
+    <lastmod>2026-05-04T21:45:53.584Z</lastmod>
   </url>
   <url>
     <loc>https://carrel.bbingham.dev/index.html</loc>
-    <lastmod>2026-05-04T04:11:22.757Z</lastmod>
+    <lastmod>2026-05-04T21:45:53.565Z</lastmod>
   </url>
   <url>
     <loc>https://carrel.bbingham.dev/about.html</loc>
-    <lastmod>2026-05-04T04:11:22.757Z</lastmod>
+    <lastmod>2026-05-04T21:45:53.565Z</lastmod>
+  </url>
+  <url>
+    <loc>https://carrel.bbingham.dev/posts/wave-spectra-sim/spectra-from-psd/index.html</loc>
+    <lastmod>2026-05-04T21:45:53.594Z</lastmod>
   </url>
 </urlset>

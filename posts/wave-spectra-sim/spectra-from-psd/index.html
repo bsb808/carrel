@@ -7,8 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brian Bingham">
+<meta name="dcterms.date" content="2026-05-03">
+<meta name="description" content="How to generate a time series from a power spectral density without getting the conventions wrong.">
 
-<title>Brian Bingham · Carrel</title>
+<title>Time Series From a PSD: Scaling, Units, Sidedness – Brian Bingham · Carrel</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,24 +29,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e27d811d1d45216dbb63b0504e39f36d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-e27d811d1d45216dbb63b0504e39f36d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,71 +72,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-description','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="alternate" type="application/rss+xml" title="Brian Bingham · Carrel" href="index.xml" data-external="1"><meta property="og:title" content="Brian Bingham · Carrel">
-<meta property="og:description" content="Short essays on engineering, computation">
-<meta property="og:image" content="https://carrel.bbingham.dev/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:title" content="Time Series From a PSD: Scaling, Units, Sidedness – Brian Bingham · Carrel">
+<meta property="og:description" content="How to generate a time series from a power spectral density without getting the conventions wrong.">
+<meta property="og:image" content="https://carrel.bbingham.dev/posts/wave-spectra-sim/spectra-from-psd/hero.png">
 <meta property="og:site_name" content="Brian Bingham · Carrel">
+<meta property="og:image:height" content="1240">
+<meta property="og:image:width" content="1557">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -146,7 +90,7 @@ window.Quarto = {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Brian Bingham · Carrel</span>
     </a>
   </div>
@@ -157,17 +101,17 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="./index.xml"> <i class="bi bi-rss" role="img" aria-label="RSS feed">
+    <a class="nav-link" href="../../../index.xml"> <i class="bi bi-rss" role="img" aria-label="RSS feed">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -188,15 +132,34 @@ window.Quarto = {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Y29tcHV0aW5nLWhpc3Rvcnk=">computing-history <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGVjaG5pY2FsLW5vdGU=">technical-note <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dXN2LWNvbnRyb2w=">usv-control <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d2F2ZS1zcGVjdHJhLXNpbQ==">wave-spectra-sim <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-it-is" id="toc-what-it-is" class="nav-link active" data-scroll-target="#what-it-is">What it is</a></li>
+  <li><a href="#why-release-it-now" id="toc-why-release-it-now" class="nav-link" data-scroll-target="#why-release-it-now">Why release it now</a></li>
+  <li><a href="#who-its-for" id="toc-who-its-for" class="nav-link" data-scroll-target="#who-its-for">Who it’s for</a></li>
+  <li><a href="#provenance" id="toc-provenance" class="nav-link" data-scroll-target="#provenance">Provenance</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-</div>
+<h1 class="title">Time Series From a PSD: Scaling, Units, Sidedness</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">technical-note</div>
+    <div class="quarto-category">wave-spectra-sim</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    How to generate a time series from a power spectral density without getting the conventions wrong.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -204,10 +167,16 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p><a href="https://carrel.bbingham.dev">Brian Bingham</a> <a href="https://orcid.org/0009-0007-8261-3108" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+             <p>Brian Bingham </p>
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 3, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -217,89 +186,53 @@ window.Quarto = {
 </header>
 
 
-<p>Short essays on engineering and computation, written for academic colleagues. Working thoughts shared earlier than a paper would allow; substantive pieces archived to <a href="https://zenodo.org/">Zenodo</a> for the long record.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>I write these with Claude Code. I lead, it drafts and revises on my instruction, and I review the final carefully before posting. Mistakes are mine. The technical note itself predates AI assistance; only this companion essay was drafted with Claude.</p>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="hero.png" class="img-fluid figure-img"></p>
+<figcaption>Two example time series — generated by summation of cosines (blue) and an FFT method (red) — sampled from the same target PSD with the same random phases. They overlay to numerical precision. From the technical note, Figure 2.</figcaption>
+</figure>
+</div>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p><em>“While the relationship between a spectral description and a time series sampled from that description is mathematically well defined, generating sample time series consistent with the physical description requires attention to the details of spectra normalization scaling, engineering unit conventions, and sidedness of the spectral representation.”</em> — from the abstract</p>
+</div>
+</div>
+</div>
+<section id="what-it-is" class="level2">
+<h2 class="anchored" data-anchor-id="what-it-is">What it is</h2>
+<p>A short technical note on generating a sample time series from a power spectral density. It walks through the Fourier-transform preliminaries, then derives two simulation methods — summation of cosines and an FFT-based variant — with explicit accounting for the choices that quietly bite practitioners: angular vs.&nbsp;ordinary frequency, one-sided vs.&nbsp;two-sided PSD, and the scaling factors that attach to each combination. A worked example puts both methods on the same footing and shows that the FFT variant runs about sixty times faster on the test problem; a MATLAB reference implementation is linked from the report.</p>
+</section>
+<section id="why-release-it-now" class="level2">
+<h2 class="anchored" data-anchor-id="why-release-it-now">Why release it now</h2>
+<p>The note was written in 2023 as background for the maritime simulation tools we use for autonomous surface and underwater vehicles. It isn’t a research contribution — it’s a synthesis — so there was never a peer-review pipeline for it. But the same conventions confusion comes up every time a graduate student or a colleague needs to drive a simulator from an empirical spectrum, and there’s no single short reference I can hand over. Putting it on Zenodo with a DOI gives it a citable, indexable home; this companion essay puts it in front of readers who wouldn’t otherwise find a <code>.pdf</code> on a project drive.</p>
+</section>
+<section id="who-its-for" class="level2">
+<h2 class="anchored" data-anchor-id="who-its-for">Who it’s for</h2>
+<p>Engineers who need physically meaningful stochastic inputs to a simulation — wave fields, wind, vehicle disturbances, sensor noise — from a spectral specification. Especially useful the first time you realize the empirical spectrum you’ve been handed is one-sided, your implementation is two-sided, and the variance you get back is off by a factor of two.</p>
+</section>
+<section id="provenance" class="level2">
+<h2 class="anchored" data-anchor-id="provenance">Provenance</h2>
+<p>Originally released as Naval Postgraduate School technical report NPS-MAE-23-002, dated 1 April 2023. The present PDF has been reformatted in the IEEEtran journal style for compactness; the technical content is unchanged from the original. The MATLAB reference implementation is in <a href="https://github.com/bsb808/OceanNotes/tree/master/src/gen_timeseries_from_psd"><code>bsb808/OceanNotes</code></a> on GitHub.</p>
+<p><a href="spectra-from-psd.pdf">Download PDF</a></p>
 
 
+</section>
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="dGVjaG5pY2FsLW5vdGUlMkN1c3YtY29udHJvbA==" data-listing-date-sort="1777766400000" data-listing-file-modified-sort="1777931153584" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="512">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/usv-control/cusv-model/index.html" class="no-external">A unified six-DoF model for the CUSV</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGVjaG5pY2FsLW5vdGU='); return false;">technical-note</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dXN2LWNvbnRyb2w='); return false;">usv-control</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/usv-control/cusv-model/index.html" class="no-external">
-<p>A 2020 working note that parameterises a Fossen-style marine-craft model for a representative unmanned surface vessel — combining manoeuvring and seakeeping in one Gazebo plugin.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/usv-control/cusv-model/index.html" class="no-external">
-<div class="listing-date">
-May 3, 2026
-</div>
-<div class="listing-reading-time">3 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="dGVjaG5pY2FsLW5vdGUlMkN3YXZlLXNwZWN0cmEtc2lt" data-listing-date-sort="1777766400000" data-listing-file-modified-sort="1777931153594" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="400">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/wave-spectra-sim/spectra-from-psd/index.html" class="no-external">Time Series From a PSD: Scaling, Units, Sidedness</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGVjaG5pY2FsLW5vdGU='); return false;">technical-note</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('d2F2ZS1zcGVjdHJhLXNpbQ=='); return false;">wave-spectra-sim</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/wave-spectra-sim/spectra-from-psd/index.html" class="no-external">
-<p>How to generate a time series from a power spectral density without getting the conventions wrong.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/wave-spectra-sim/spectra-from-psd/index.html" class="no-external">
-<div class="listing-date">
-May 3, 2026
-</div>
-<div class="listing-reading-time">2 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="Y29tcHV0aW5nLWhpc3Rvcnk=" data-listing-date-sort="1777766400000" data-listing-file-modified-sort="1777931153567" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="804">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/computing-history/where-are-the-humans/index.html" class="no-external">Where Are the Humans?</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29tcHV0aW5nLWhpc3Rvcnk='); return false;">computing-history</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/computing-history/where-are-the-humans/index.html" class="no-external">
-<p>Persistent roles in computing</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/computing-history/where-are-the-humans/index.html" class="no-external">
-<div class="listing-date">
-May 3, 2026
-</div>
-<div class="listing-reading-time">5 min</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -718,5 +651,5 @@ May 3, 2026
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

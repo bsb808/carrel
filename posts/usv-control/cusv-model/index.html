@@ -7,8 +7,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Brian Bingham">
+<meta name="dcterms.date" content="2026-05-03">
+<meta name="description" content="A 2020 working note that parameterises a Fossen-style marine-craft model for a representative unmanned surface vessel — combining manoeuvring and seakeeping in one Gazebo plugin.">
 
-<title>Brian Bingham · Carrel</title>
+<title>A unified six-DoF model for the CUSV – Brian Bingham · Carrel</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,24 +29,22 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-e27d811d1d45216dbb63b0504e39f36d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-e27d811d1d45216dbb63b0504e39f36d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,81 +72,25 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-date','listing-title','listing-description','listing-categories','listing-reading-time',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-date","listing-title","listing-author","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <style>html{ scroll-behavior: smooth; }</style>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="alternate" type="application/rss+xml" title="Brian Bingham · Carrel" href="index.xml" data-external="1"><meta property="og:title" content="Brian Bingham · Carrel">
-<meta property="og:description" content="Short essays on engineering, computation">
-<meta property="og:image" content="https://carrel.bbingham.dev/data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg==">
+<meta property="og:title" content="A unified six-DoF model for the CUSV – Brian Bingham · Carrel">
+<meta property="og:description" content="A 2020 working note that parameterises a Fossen-style marine-craft model for a representative unmanned surface vessel — combining manoeuvring and seakeeping in one Gazebo plugin.">
+<meta property="og:image" content="https://carrel.bbingham.dev/posts/usv-control/cusv-model/hero.png">
 <meta property="og:site_name" content="Brian Bingham · Carrel">
+<meta property="og:image:height" content="480">
+<meta property="og:image:width" content="640">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed fullcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../../index.html">
     <span class="navbar-title">Brian Bingham · Carrel</span>
     </a>
   </div>
@@ -157,17 +101,17 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="../../../index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item compact">
-    <a class="nav-link" href="./index.xml"> <i class="bi bi-rss" role="img" aria-label="RSS feed">
+    <a class="nav-link" href="../../../index.xml"> <i class="bi bi-rss" role="img" aria-label="RSS feed">
 </i> 
 <span class="menu-text"></span></a>
   </li>  
@@ -187,16 +131,24 @@ window.Quarto = {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(3)</span></div><div class="category" data-category="Y29tcHV0aW5nLWhpc3Rvcnk=">computing-history <span class="quarto-category-count">(1)</span></div><div class="category" data-category="dGVjaG5pY2FsLW5vdGU=">technical-note <span class="quarto-category-count">(2)</span></div><div class="category" data-category="dXN2LWNvbnRyb2w=">usv-control <span class="quarto-category-count">(1)</span></div><div class="category" data-category="d2F2ZS1zcGVjdHJhLXNpbQ==">wave-spectra-sim <span class="quarto-category-count">(1)</span></div></div></div>
+    
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-</div>
+<h1 class="title">A unified six-DoF model for the CUSV</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">technical-note</div>
+    <div class="quarto-category">usv-control</div>
+  </div>
+  </div>
 
+<div>
+  <div class="description">
+    A 2020 working note that parameterises a Fossen-style marine-craft model for a representative unmanned surface vessel — combining manoeuvring and seakeeping in one Gazebo plugin.
+  </div>
+</div>
 
 
 <div class="quarto-title-meta">
@@ -204,10 +156,16 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Author</div>
     <div class="quarto-title-meta-contents">
-             <p><a href="https://carrel.bbingham.dev">Brian Bingham</a> <a href="https://orcid.org/0009-0007-8261-3108" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+             <p>Brian Bingham </p>
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">May 3, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -217,89 +175,46 @@ window.Quarto = {
 </header>
 
 
-<p>Short essays on engineering and computation, written for academic colleagues. Working thoughts shared earlier than a paper would allow; substantive pieces archived to <a href="https://zenodo.org/">Zenodo</a> for the long record.</p>
+<div class="callout callout-style-simple callout-note no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>I write these with Claude Code. I lead, it drafts and revises on my instruction, and I review the final carefully before posting. Mistakes are mine. The technical note itself (the PDF) predates this workflow and was drafted entirely without AI assistance; only this companion essay was written with Claude Code.</p>
+</div>
+</div>
+</div>
+<p><a href="cusv-model.pdf">Download PDF</a></p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="hero.png" class="img-fluid figure-img"></p>
+<figcaption>Wave-slope spectra alongside the vessel pitch and roll responses expressed as transfer functions — Figure 10 of the technical note. The unified model lets a simulator drive seakeeping responses directly from a chosen sea state.</figcaption>
+</figure>
+</div>
+<blockquote class="blockquote">
+<p><em>“For the purposes of supporting the development of autonomy, it is important that the unified simulation model include both manoeuvring and seakeeping degrees-of-freedom. The manoeuvring aspects of the model influence the vessel steering and control portion of the autonomy solution. The inclusion of the seakeeping aspect of the model is critical for exercising the sensory perception portion of the autonomy solution.”</em></p>
+</blockquote>
+<p>The note collects a self-consistent set of parameters for a six-degree-of-freedom marine-craft model adapted from Fossen’s <em>Handbook of Marine Craft Hydrodynamics and Motion Control</em> and implemented as a Gazebo physics-engine plugin. The vessel of record is the Common Unmanned Surface Vessel (CUSV), a 12-metre, 33-tonne catamaran serving as a representative platform.</p>
+<p>Surface-vessel models are traditionally split in two: <em>manoeuvring</em> models cover surge, sway and yaw; <em>seakeeping</em> models cover heave, roll and pitch. For autonomy work that split is awkward. A controller that only sees manoeuvring degrees of freedom cannot exercise the perception stack against the same waves that move the boat. The note documents a single parameter set that does both.</p>
+<p>The hydrodynamic derivatives come from where the literature has the strongest theoretical or empirical support: Sarda <em>et al.</em> for the manoeuvring-plane added masses, Greenhow &amp; Lin for the partially-submerged-cylinder seakeeping terms, Holtrop’s method and ITTC-1957 for drag, with the seakeeping coefficients then sanity-checked against step-response tests of the time-domain implementation (logarithmic-decrement identification of a second-order transfer function in heave, pitch and roll). The resulting frequency-domain model lets the simulator drive vessel motion directly from a chosen wave-height spectrum — see the wave-slope-vs-pitch/roll figure above.</p>
+<p>I am releasing this for two reasons. The first is utility: this parameterisation underpinned the CUSV branch of the WAM-V Gazebo plugin used in Virtual RobotX (VRX), and it is the kind of artefact other robotics groups end up reconstructing from Fossen’s text and half a dozen papers. Having a worked example that names the chosen references and shows the resulting numbers is useful when you are trying to do the same job for a different hull. The second reason is pedagogical: the note is a compact tour of the steps a graduate student needs to take to go from “we want to simulate a boat” to “we have hydrodynamic derivatives the physics engine can integrate”. It is not a complete textbook; it is a worked example with citations back to the literature for the parts that are.</p>
+<p>The audience, then, is engineers and graduate students building or calibrating surface-vessel simulators — particularly those using Gazebo or Ignition, or any environment where the model has to be parameterised explicitly rather than absorbed from a vendor’s CAD package.</p>
+<p>The technical content is unchanged from the original draft of 1 October 2020. The release version cleans up the LaTeX preamble, self-contains the bibliography, and adds a provenance footnote. The Zenodo deposit (DOI to follow) dates the <em>release</em>, not the science.</p>
 
 
 
-
-<div class="quarto-listing quarto-listing-container-default" id="listing-listing">
-<div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="dGVjaG5pY2FsLW5vdGUlMkN1c3YtY29udHJvbA==" data-listing-date-sort="1777766400000" data-listing-file-modified-sort="1777931153584" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="3" data-listing-word-count-sort="512">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/usv-control/cusv-model/index.html" class="no-external">A unified six-DoF model for the CUSV</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGVjaG5pY2FsLW5vdGU='); return false;">technical-note</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('dXN2LWNvbnRyb2w='); return false;">usv-control</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/usv-control/cusv-model/index.html" class="no-external">
-<p>A 2020 working note that parameterises a Fossen-style marine-craft model for a representative unmanned surface vessel — combining manoeuvring and seakeeping in one Gazebo plugin.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/usv-control/cusv-model/index.html" class="no-external">
-<div class="listing-date">
-May 3, 2026
-</div>
-<div class="listing-reading-time">3 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="1" data-categories="dGVjaG5pY2FsLW5vdGUlMkN3YXZlLXNwZWN0cmEtc2lt" data-listing-date-sort="1777766400000" data-listing-file-modified-sort="1777931153594" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="2" data-listing-word-count-sort="400">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/wave-spectra-sim/spectra-from-psd/index.html" class="no-external">Time Series From a PSD: Scaling, Units, Sidedness</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('dGVjaG5pY2FsLW5vdGU='); return false;">technical-note</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('d2F2ZS1zcGVjdHJhLXNpbQ=='); return false;">wave-spectra-sim</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/wave-spectra-sim/spectra-from-psd/index.html" class="no-external">
-<p>How to generate a time series from a power spectral density without getting the conventions wrong.</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/wave-spectra-sim/spectra-from-psd/index.html" class="no-external">
-<div class="listing-date">
-May 3, 2026
-</div>
-<div class="listing-reading-time">2 min</div>
-</a>
-</div>
-</div>
-<div class="quarto-post image-right" data-index="2" data-categories="Y29tcHV0aW5nLWhpc3Rvcnk=" data-listing-date-sort="1777766400000" data-listing-file-modified-sort="1777931153567" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="5" data-listing-word-count-sort="804">
-<div class="body">
-<h3 class="no-anchor listing-title">
-<a href="./posts/computing-history/where-are-the-humans/index.html" class="no-external">Where Are the Humans?</a>
-</h3>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Y29tcHV0aW5nLWhpc3Rvcnk='); return false;">computing-history</div>
-
-</div>
-<div class="delink listing-description"><a href="./posts/computing-history/where-are-the-humans/index.html" class="no-external">
-<p>Persistent roles in computing</p>
-</a></div>
-</div>
-<div class="metadata">
-<a href="./posts/computing-history/where-are-the-humans/index.html" class="no-external">
-<div class="listing-date">
-May 3, 2026
-</div>
-<div class="listing-reading-time">5 min</div>
-</a>
-</div>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{bingham2026,
+  author = {Bingham, Brian and Bingham, Brian},
+  title = {A Unified {six-DoF} Model for the {CUSV}},
+  date = {2026-05-03},
+  url = {https://carrel.bbingham.dev/posts/usv-control/cusv-model/},
+  langid = {en}
+}
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-bingham2026" class="csl-entry quarto-appendix-citeas" role="listitem">
+Bingham, Brian, and Brian Bingham. 2026. <span>“A Unified Six-DoF Model
+for the CUSV.”</span> May 3. <a href="https://carrel.bbingham.dev/posts/usv-control/cusv-model/">https://carrel.bbingham.dev/posts/usv-control/cusv-model/</a>.
+</div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -718,5 +633,5 @@ May 3, 2026
 
 
 
-<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>
