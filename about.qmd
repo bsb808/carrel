@@ -1,5 +1,24 @@
 ---
 title: "About"
+about:
+  template: trestles
+  image: images/brian.webp
+  image-shape: round
+  image-width: 14em
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/briansbingham/
+    - icon: github
+      text: GitHub
+      href: https://github.com/bsb808
+    - icon: envelope
+      text: Email
+      href: mailto:briansbingham@gmail.com
+    - text: Google Scholar
+      href: https://scholar.google.com/citations?user=Q8uyljgAAAAJ&hl=en
+    - text: ORCID
+      href: https://orcid.org/0009-0007-8261-3108
 ---
 
 I'm Brian Bingham, a professor of Mechanical and Aerospace Engineering
@@ -16,11 +35,3 @@ revised over time as my thinking does. Substantive pieces are
 archived to Zenodo for DOIs and Google Scholar indexing. The audience
 is engineering academics, educators, and the occasional curious
 student.
-
-Elsewhere:
-
-- [Google Scholar](https://scholar.google.com/citations?user=Q8uyljgAAAAJ&hl=en)
-- [LinkedIn](https://www.linkedin.com/in/briansbingham/)
-- [GitHub](https://github.com/bsb808)
-- [ORCID](https://orcid.org/0009-0007-8261-3108)
-- Email: briansbingham@gmail.com

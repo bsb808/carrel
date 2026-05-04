@@ -1,0 +1,15 @@
+---
+pagetitle: "Brian Bingham · Carrel"
+listing:
+  contents: posts
+  type: default
+  sort: "date desc"
+  fields: [date, title, description, categories, reading-time]
+  feed: true
+  categories: true
+---
+
+Short essays on engineering and computation, written for academic
+colleagues. Working thoughts shared earlier than a paper would
+allow; substantive pieces archived to [Zenodo](https://zenodo.org/)
+for the long record.
