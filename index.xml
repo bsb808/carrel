@@ -30,6 +30,7 @@
 </div>
 </div>
 </div>
+<p><a href="where-are-the-humans.pdf">Download PDF</a> · DOI: <a href="https://doi.org/10.5281/zenodo.20018252">10.5281/zenodo.20018252</a></p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="https://carrel.bbingham.dev/posts/computing-history/where-are-the-humans/hero.jpg" class="img-fluid figure-img"></p>
@@ -60,7 +61,18 @@
 <li id="fn4"><p>Charles Babbage, <em>Passages from the Life of a Philosopher</em> (1864), recounting an 1821 incident with John Herschel that prompted the Difference Engine.↩︎</p></li>
 <li id="fn5"><p>As recounted by John Backus; see, e.g., his reflections in <a href="https://thenewstack.io/how-john-backus-fortran-beat-machine-codes-priesthood/">The New Stack</a>.↩︎</p></li>
 </ol>
-</section></div> ]]></description>
+</section><section class="quarto-appendix-contents" id="quarto-citation"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{bingham2026,
+  author = {Bingham, Brian and Bingham, Brian},
+  title = {Where {Are} the {Humans?}},
+  date = {2026-05-03},
+  url = {https://carrel.bbingham.dev/posts/computing-history/where-are-the-humans/},
+  doi = {10.5281/zenodo.20018252},
+  langid = {en}
+}
+</code></pre><div class="quarto-appendix-secondary-label">For attribution, please cite this work as:</div><div id="ref-bingham2026" class="csl-entry quarto-appendix-citeas">
+Bingham, Brian, and Brian Bingham. 2026. <span>“Where Are the
+Humans?”</span> May 3. <a href="https://doi.org/10.5281/zenodo.20018252">https://doi.org/10.5281/zenodo.20018252</a>.
+</div></div></section></div> ]]></description>
   <category>computing-history</category>
   <guid>https://carrel.bbingham.dev/posts/computing-history/where-are-the-humans/</guid>
   <pubDate>Sun, 03 May 2026 00:00:00 GMT</pubDate>
