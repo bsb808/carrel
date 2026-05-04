@@ -10,30 +10,34 @@ Running list of deferred work. Strike items as they're completed.
       deploy workflow, hero image. See `HANDOFF.md` for the full
       checkpoint.
 
-- [ ] **Verify deploy Action goes green.** Check at
-      <https://github.com/bsb808/carrel/actions>, or `gh run list`
-      from a machine with `gh` CLI.
+- [x] **Verify deploy Action goes green.** Confirmed 2026-05-03: run
+      25299007577 succeeded after seeding the `gh-pages` branch
+      (orphan) — earlier runs failed only because the branch didn't
+      yet exist on the remote.
 
-- [ ] **Configure DNS for `carrel.bbingham.dev`** at Porkbun.
-      CNAME `carrel` → `bsb808.github.io`. The existing wildcard
-      `*.bbingham.dev` is fine to leave; specific records take
-      precedence.
+- [x] **DNS for `carrel.bbingham.dev`.** Already configured at
+      Porkbun; `dig +short carrel.bbingham.dev` returns
+      `bsb808.github.io.` and the GitHub Pages IPs.
 
-- [ ] **Connect repo to GitHub Pages.** Settings → Pages → Source
-      "Deploy from a branch", Branch `gh-pages`, Folder `/ (root)`,
-      Custom domain `carrel.bbingham.dev`. Enable "Enforce HTTPS"
-      only after the DNS check goes green and the cert finishes
-      provisioning.
+- [x] **GitHub Pages.** Already set: source `gh-pages` / root,
+      custom domain `carrel.bbingham.dev`. HTTPS cert approved
+      (expires 2026-08-01); `https_enforced` flipped to `true` on
+      2026-05-03.
+
+- [x] **Site renders end-to-end.** Verified 2026-05-03 at
+      <https://carrel.bbingham.dev> — landing page lists the
+      article, hero image and callout render.
 
 - [ ] **Connect repo to Zenodo.** zenodo.org → sign in with GitHub →
       Settings → GitHub → toggle `bsb808/carrel` on.
 
-- [ ] **End-to-end verification.** Visit
-      <https://carrel.bbingham.dev>, confirm landing page lists the
-      article, click through to verify hero image, callout,
-      footnotes. Test LinkedIn preview card.
+- [ ] **LinkedIn preview card check.** Draft (don't post) a
+      LinkedIn share of the live URL; confirm the OG card shows
+      the title, description, and Moore School photo.
 
-- [ ] **Delete `HANDOFF.md`** once the site is live and verified.
+- [ ] **Bump `actions/checkout` to v5** in
+      `.github/workflows/publish.yml`. Non-urgent: GitHub deprecates
+      Node 20 actions on 2026-09-16.
 
 ## Migrate technical notes from `~/WorkingCopies/OceanNotes/`
 
