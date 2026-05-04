@@ -70,7 +70,7 @@ Traditionally, surface vessel models are separated into \emph{maneuvering} model
 
 \section{Rigid-Body Terms}
 
-We assume that the principal axis of inertia can be consider to be coincident with the center-of-mass of the vessel.  The vessel is symmetric about the $x-z$ plane (left-right symmetry), which implies that $I_{xy}=I{yx}=0$.  We also simplify by considering the vessel to be symmetric about the $x-y$ plane (top-bottom symmetry) such that $I_{xz}=0$.  The result is a diagonal inertia matrix.
+We assume that the principal axes of inertia can be considered coincident with the body-fixed axes through the center of mass of the vessel.  The vessel is symmetric about the $x-z$ plane (left-right symmetry), which implies that $I_{xy}=I_{yx}=0$.  As a deliberate simplification we further treat the vessel as symmetric about the $x-y$ plane (top-bottom symmetry) so that $I_{xz}=I_{yz}=0$; real hulls differ above and below the waterline, but this idealization yields a diagonal inertia matrix that is adequate for the purposes of this model.
 \begin{equation}
 \bm{M}_{RB}= \left[
 \begin{array}{ccccccc}
@@ -98,7 +98,7 @@ and a Coriolis-centripetal matrix
 \subsection{Parameter Estimation}
 
 \begin{itemize}
-\item Mass is calculated based on an estimate of draft, the effective length and the cross-section of a circle segment.  The value is consistent specifications of similar vessels.
+\item Mass is calculated based on an estimate of draft, the effective length and the cross-section of a circle segment.  The value is consistent with specifications of similar vessels.
 \item Moments of inertia are based on an effective cylindrical model
 \end{itemize}
 
@@ -121,11 +121,11 @@ and a Coriolis-centripetal matrix
   $T$ & 1.2 & \unit[]{m} & Draft \\
   \hline \hline \multicolumn{4}{c}{Calculated Values} \\
   \hline
-  $A_{wp}$ & 35 & $\unit[]{m^2}$ & Waterplane area \\
+  $A_{WP}$ & 35 & $\unit[]{m^2}$ & Waterplane area \\
   $\nabla$ & 32 & $\unit[]{m^3}$ & Displaced volume \\
   $m$ & 33,000 & $\unit[]{kg}$ & Mass \\
-  $I_{xx}$ & 20,700 & $\unit[]{kg\cdot m^s}$ & Moment of inertia, roll \\
-  $I_{yy}=I_{zz}$ & 420,000 & $\unit[]{kg\cdot m^s}$ & Moment of inertia, pitch and yaw \\
+  $I_{xx}$ & 20,700 & $\unit[]{kg\cdot m^2}$ & Moment of inertia, roll \\
+  $I_{yy}=I_{zz}$ & 420,000 & $\unit[]{kg\cdot m^2}$ & Moment of inertia, pitch and yaw \\
   \hline
 \end{tabular}
 \end{table}
@@ -211,7 +211,7 @@ This approximation of the hydrodynamic effects is implemented as a parameterized
 
 \subsection{Drag Estimates}
 
-The resistance $R$ do to any particular drag component is expressed as a drag coefficient $C_D$ were
+The resistance $R$ due to any particular drag component is expressed as a drag coefficient $C_D$ where
 \[
 R = \frac{1}{2}C_D \rho S U^2
 \]
@@ -219,7 +219,7 @@ where $S$ is the at-rest hull wetted surface and $\rho$ is the water density. Th
 \[
 C_T = C_W + (1+k) C_F
 \]
-where $C_w$ is the wave drag, $C_F$ is the frictional drag and $k$ is a form factor representing the viscous pressure drag some fraction of the frictional resistance coefficient.
+where $C_W$ is the wave drag, $C_F$ is the frictional drag, and $k$ is a form factor that expresses the viscous pressure drag as a fraction of the frictional resistance.
 
 
 \begin{table}
@@ -240,7 +240,7 @@ where $C_w$ is the wave drag, $C_F$ is the frictional drag and $k$ is a form fac
   Draft &  $T$ & 1.2 & \unit[]{m} \\
   \hline \hline \multicolumn{4}{c}{Calculated Values} \\
   \hline
-  Waterplane area & $A_{wp}$ & 35 & $\unit[]{m^2}$  \\
+  Waterplane area & $A_{WP}$ & 35 & $\unit[]{m^2}$  \\
   Maximum section area & $A_X$ & 3.01 & $\unit[]{m^2}$  \\
   Midship section area & $A_M$ & 3.01 & $\unit[]{m^2}$  \\
   Wetted surface Area & $S$ & 51 & $\unit[]{m^2}$  \\
@@ -268,13 +268,13 @@ where $C_w$ is the wave drag, $C_F$ is the frictional drag and $k$ is a form fac
 \end{figure}
 
 
-Holtrop's method suggests that the frictional drag component can be neglected for normal  \cite{holtrop82approximate,holtrop84statistical}
+Holtrop's method \cite{holtrop82approximate,holtrop84statistical} provides an estimate of the form factor $(1+k)$ for normal-form hulls.
 
 \begin{itemize}
 \item Assume a Froude number between $Fr=0.2--0.3$, which is $U=\unit[2.2--3.3]{m/s}$.
-\item Figure~\ref{f:drag_est} suggests $C_w \approx \num{1.0e-3}$.
+\item Figure~\ref{f:drag_est} suggests $C_W \approx \num{1.0e-3}$.
 \item Using Holtrop's method \cite{holtrop82approximate,holtrop84statistical}, we calculate $(1+k) = 1.76$
-  \item Using ITTC 1957 line/method $C_F = \frac{0.075}{(log_{10}(Re)-2)^2}$ suggest that  $C_w \approx \num{2.0e-3}$ which is consistent with the guideline that the majority of the hull's total resistance is due to water friction at slow speeds.
+  \item Using the ITTC 1957 friction line $C_F = \frac{0.075}{(\log_{10}(Re)-2)^2}$ gives $C_F \approx \num{2.0e-3}$, consistent with the guideline that the majority of the hull's total resistance is due to water friction at slow speeds.
   \end{itemize}
 The result is $C_T = \num{4.5e-3}$, the total resistance force is
 \[
@@ -286,8 +286,8 @@ So
 \item $X_{u|u|}=\unit[118.0]{N/(m/s)^2}$
 \item If similarity to VRX model holds, then
   \begin{itemize}
-  \item  $Y_{u|u|}= 11.4 \cdot X_{u|u|} = \unit[1345.0]{N/(m/s)^2}$
-  \item  $Z_{v|v|}= 31.2 \cdot X_{u|u|} = \unit[3680.0]{N/(m/s)^2}$
+  \item  $Y_{v|v|}= 11.4 \cdot X_{u|u|} = \unit[1345.0]{N/(m/s)^2}$
+  \item  $Z_{w|w|}= 31.2 \cdot X_{u|u|} = \unit[3680.0]{N/(m/s)^2}$
   \end{itemize}
 \end{itemize}
 
@@ -306,8 +306,8 @@ So
   Parameter & Description & Value & Units & Method \tabularnewline
   \hline
   $m$ & Mass & 33,000 & $\unit[]{kg}$ & Displacement estimate based on geometry \tabularnewline
-  $I_{xx}$ & MOI-roll & 20,700 & $\unit[]{kg\cdot m^s}$ & Effective cylinder\tabularnewline
-  $I_{yy}=I_{zz}$ & MOI-pitch/yaw & 420,000 & $\unit[]{kg\cdot m^s}$ & Effective cylinder \tabularnewline
+  $I_{xx}$ & MOI-roll & 20,700 & $\unit[]{kg\cdot m^2}$ & Effective cylinder\tabularnewline
+  $I_{yy}=I_{zz}$ & MOI-pitch/yaw & 420,000 & $\unit[]{kg\cdot m^2}$ & Effective cylinder \tabularnewline
   $X_{\dot{u}}$ & Added mass, surge & 0 & $\unit[]{kg}$ & Neglected \tabularnewline
   $Y_{\dot{v}}$ & Added mass, sway  & 26,000 & $\unit[]{kg}$ & Cylinder \cite{greenhow88added} \tabularnewline
   $Z_{\dot{w}}$ & Added mass, heave  & 31,000 & $\unit[]{kg}$ & Cylinder \cite{greenhow88added} \tabularnewline
@@ -413,7 +413,7 @@ The wave slope spectrum can be expressed as
 
 \subsubsection{Characteristic Wave Heights}
 
-As summarized in \cite{young99wind} the propbability density function of wave heights is typically considered to follow the Rayleigh distribution
+As summarized in \cite{young99wind} the probability density function of wave heights is typically considered to follow the Rayleigh distribution
 \begin{equation}
   p(H; 2\sigma_{\eta}) = \frac{H}{(2\sigma_\eta)^2} e^{-H^2/(2(2\sigma_\eta)^2)}
 \end{equation}
@@ -423,7 +423,7 @@ Here $H$ is the wave height and the Rayleigh distribution scale parameter is $\s
 
 \begin{table}[hb!]
 \renewcommand{\arraystretch}{1.7}
-\caption{Characteristic wave height metrics or represenatative measures of wave height}
+\caption{Characteristic wave height metrics or representative measures of wave height}
 \label{t:wavemetrics}
 \centering
 \begin{tabular}{lcp{0.3\linewidth}}
@@ -443,7 +443,7 @@ Here $H$ is the wave height and the Rayleigh distribution scale parameter is $\s
 % Set figure width
 \newcommand{\RFW}{0.7}
 
-The source for generating the analysis and figures is in the \verb+leanis_analysis+ repository at \url{https://bitbucket.org/greensightag/leanis_analysis/src/master/vessel_seakeeping/wave_spectrum_ex.py}.
+The analysis and figures shown below were generated by a Python script developed alongside this work. % CLAUDE: The scripts are available in this folder: /home/bsb/WorkingCopies/OceanNotes/src/usv_param_est/   .   Copy the relevant to material here: /home/bsb/WorkingCopies/carrel/posts/usv-control/cusv-model/code
 
 \subsubsection{Wave Spectra: Wave Height and Slope}
 
