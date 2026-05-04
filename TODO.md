@@ -173,6 +173,12 @@ is being deprecated as a separate repo.
 - [ ] **Release sonar beam notes** (`sonar_beam_notes.tex`). Same
       pattern. Seeds a `sonar` (or `acoustics`) thread; one post for now,
       tagged with the thread name so future notes accrue.
+      *Stash 2026-05-03:* source moved as-is to
+      `posts/sonar/single-beam-sonar/` for later cleanup. The `.tex` is
+      draft-quality (fragmentary intro, no abstract, all figures
+      commented out, ends mid-section) but renders to an 8-page PDF.
+      No companion essay, no Zenodo deposit. Original kept in
+      `OceanNotes/` until release proper.
 
 - [ ] **Release CUSV modeling notes** (`cusv_model.tex`). Same pattern.
       Anchors the `usv-control` thread named in `PLAN.md`.
