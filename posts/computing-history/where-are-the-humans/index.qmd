@@ -29,7 +29,7 @@ is what lets you locate them.
 the Myths of Autonomy* (Viking, 2015). Brief parenthetical that
 Mindell was one of my PhD advisors. Amazon link to the book.
 
-**Candidate opening quotes — pick one.**
+**Candidate opening quotes — pick one.** % CLAUDE: Use 1.
 
 1. *"AI agents will do the work."* — generic but instantly
    recognizable. Pin to a specific 2025/2026 executive (Altman, Amodei,
@@ -77,12 +77,12 @@ to recognize."
 
 **Open question.** One sentence per era, or three sentences for the
 whole arc? At ~600 words total, a single tight paragraph reads more
-honestly than a beat-by-beat march.
+honestly than a beat-by-beat march.  % CLAUDE: The latter.
 
 **Candidate images.** Optional small inline image: a representative
 artifact like an ENIAC patch panel close-up.
 [Wikimedia: ENIAC](https://commons.wikimedia.org/wiki/Category:ENIAC).
-Skip if the §3 hero already carries the visual load.
+Skip if the §3 hero already carries the visual load.  % CLAUDE: Leave in for now.
 
 ## 3. The five roles — old labels, recognizable across every era
 
@@ -97,7 +97,7 @@ the humans, not that we already know exactly where they have landed.
 clauses sound — confident ("the human at the prompt"), hedged
 ("probably the human at the prompt"), or framed as hypotheses ("if
 the pattern holds, the human at the prompt")? Historical anchors
-are load-bearing either way.
+are load-bearing either way. % CLAUDE: I want to leave it for the reader to think about how they would do the mapping.
 
 **Candidate hero image for the article.** The Moore School
 differential-analyser photo of Kay McNulty, Alyse Snyder, and Sis
